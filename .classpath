@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Axis2 Library"/>
+	<classpathentry kind="src" path="_axis/source/java"/>
+	<classpathentry kind="src" path="_alfresco/source/java"/>
+	<classpathentry kind="src" path="_share/source/java"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/SDK AlfrescoEmbedded"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/SDK AlfrescoRemote"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/SDK Basic AMP"/>
+	<classpathentry kind="lib" path="_alfresco/lib"/>
+	<classpathentry kind="lib" path="_share/lib"/>
+	<classpathentry kind="lib" path="lib"/>
+	<classpathentry kind="lib" path="_axis/lib"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Slingshot"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/Java4Windows"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

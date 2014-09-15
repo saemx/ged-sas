@@ -1,0 +1,6 @@
+<webscript>
+   <shortname>Mes actions</shortname>
+   <description>Dashlet affichant les actions pouvant être exécutés</description>
+   <family>site-dashlet</family>
+   <url>/saem/components/dashlets/myActions</url>
+</webscript>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<beans>
+    <bean id="webscript.resources"
+        class="org.springframework.extensions.surf.util.ResourceBundleBootstrapComponent">
+        <property name="resourceBundles">
+            <list>
+                <value>alfresco.web-extension.messages.saemMessages</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="eu.akka.saem.share.evaluator.IsEliminationLaunchable" class="eu.akka.saem.share.evaluator.IsEliminationLaunchable" />
+    <bean id="eu.akka.saem.share.evaluator.IsRestitutionLaunchable" class="eu.akka.saem.share.evaluator.IsRestitutionLaunchable" />
+    <bean id="eu.akka.saem.share.evaluator.IsWorkflowLaunchable" class="eu.akka.saem.share.evaluator.IsWorkflowLaunchable" />
+    <bean id="eu.akka.saem.share.evaluator.hideSedaProperties" class="eu.akka.saem.share.evaluator.HideSedaProperties" />
+    <bean id="eu.akka.saem.share.evaluator.IsArchiveModifiable" class="eu.akka.saem.share.evaluator.IsArchiveModifiable" />
+    <bean id="eu.akka.saem.share.evaluator.IsArchiveBordereauViewable" class="eu.akka.saem.share.evaluator.IsArchiveBordereauViewable" />
+    <bean id="eu.akka.saem.share.evaluator.IsDocumentBordereauViewable" class="eu.akka.saem.share.evaluator.IsDocumentBordereauViewable" />
+</beans>

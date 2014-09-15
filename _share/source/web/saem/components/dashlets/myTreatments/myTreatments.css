@@ -1,0 +1,28 @@
+a.lienActions
+{
+   cursor: pointer;
+   margin-top: 3px;
+   margin-left: 10px;
+   display: block;
+   float: left;
+}
+
+img.linkArchive
+{
+	width: 20px;
+}
+
+.my-treatments table
+{
+	width: 100%;
+}
+
+.my-treatments .scrollableList 
+{
+	padding: 0px 0px;
+}
+
+.my-treatments th a
+{
+	font-weight: bold;
+}

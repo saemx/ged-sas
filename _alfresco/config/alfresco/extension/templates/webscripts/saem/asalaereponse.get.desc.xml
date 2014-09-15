@@ -1,0 +1,8 @@
+<webscript>
+  <shortname>asalaereponse</shortname>
+  <description>Traite les accusé de reception</description>
+  <url>/saem/asalaereponse</url>
+  <format default="json">argument</format>
+  <authentication>user</authentication>
+  <transaction>required</transaction>
+</webscript>

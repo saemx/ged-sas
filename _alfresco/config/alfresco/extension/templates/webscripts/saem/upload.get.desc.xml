@@ -1,0 +1,6 @@
+<webscript>
+  <shortname>SAEM document archive uploader</shortname>
+  <description>Form pour uploader les fichiers des archives</description>
+  <url>/components/form/upload</url>
+  <authentication>user</authentication>
+</webscript>

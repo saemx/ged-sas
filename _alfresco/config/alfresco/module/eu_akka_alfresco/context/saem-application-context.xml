@@ -1,0 +1,190 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<beans>
+
+	<bean id="akka.dictionaryBootstrap" parent="dictionaryModelBootstrap"
+		depends-on="dictionaryBootstrap">
+		<property name="models">
+			<list>
+				<value>alfresco/module/eu_akka_alfresco/model/saemContentModel.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="propertyReader" class="eu.akka.saem.alfresco.helper.PropertyReader" />
+
+	<bean id="profilSEDAUtils" class="eu.akka.saem.alfresco.utils.ProfilSEDAUtils">
+		<property name="namespaceService" ref="namespaceService" />
+		<property name="nodeService" ref="nodeService" />
+		<property name="searchService" ref="searchService" />
+	</bean>
+
+	<bean id="profilArchivageFormFilterType" class="eu.akka.saem.alfresco.form.ProfilArchivageFormFilter"
+		parent="baseFormFilter">
+		<property name="filterRegistry" ref="typeFilterRegistry" />
+		<property name="nodeService" ref="nodeService" />
+		<property name="namespaceService" ref="namespaceService" />
+		<property name="profilSEDAUtils" ref="profilSEDAUtils" />
+	</bean>
+
+	<bean id="profilArchivageFormFilterNode" class="eu.akka.saem.alfresco.form.ProfilArchivageFormFilter"
+		parent="baseFormFilter">
+		<property name="filterRegistry" ref="nodeFilterRegistry" />
+		<property name="nodeService" ref="nodeService" />
+		<property name="namespaceService" ref="namespaceService" />
+		<property name="profilSEDAUtils" ref="profilSEDAUtils" />
+	</bean>
+
+	<bean id="webscript.saem.create-archive.get" class="eu.akka.saem.alfresco.webscript.CreateArchiveBean"
+		parent="webscript">
+		<property name="contentService" ref="contentService" />
+		<property name="nodeService" ref="nodeService" />
+	</bean>
+	
+	<bean id="webscript.saem.archivemanagement.get" class="eu.akka.saem.alfresco.webscript.ArchiveManagementForm"
+		parent="webscript">
+		<property name="contentService" ref="contentService" />
+		<property name="nodeService" ref="nodeService" />
+	</bean>
+	
+	<bean id="webscript.saem.archivemanagement.post" class="eu.akka.saem.alfresco.webscript.ArchiveManagementFormPost"
+		parent="webscript">
+		<property name="contentService" ref="contentService" />
+		<property name="nodeService" ref="nodeService" />
+	</bean>
+	
+	<bean id="webscript.saem.asalaereponse.get" class="eu.akka.saem.alfresco.webscript.AsalaeReponseBean"
+		parent="webscript">
+		<property name="contentService" ref="contentService" />
+		<property name="nodeService" ref="nodeService" />		
+		<property name="searchService" ref="searchService" />
+		<property name="siteService" ref="siteService" />
+		<property name="serviceRegistry" ref="ServiceRegistry" />
+		<property name="profilSEDAUtils" ref="profilSEDAUtils"/>
+		<property name="fileFolderService" ref="fileFolderService" />
+		<property name="propertyReader" ref="propertyReader" />
+	</bean>
+
+	<bean id="webscript.saem.launch-elimination-action.get" class="eu.akka.saem.alfresco.webscript.LaunchEliminationAction"
+		parent="webscript">
+		<property name="actionService" ref="actionService" />
+		<property name="nodeService" ref="nodeService" />
+		<property name="workflowService" ref="WorkflowService" />
+	</bean>
+
+	<bean id="webscript.saem.get-seda-properties.get" class="eu.akka.saem.alfresco.webscript.GetSedaPropertiesBean"
+		parent="webscript">
+		<property name="nodeService" ref="nodeService" />
+		<property name="profilSEDAUtils" ref="profilSEDAUtils" />
+		<property name="contentService" ref="contentService" />
+	</bean>
+
+	<bean id="webscript.saem.create-archive.post" class="eu.akka.saem.alfresco.webscript.CreateArchiveBeanPost"
+		parent="webscript">
+		<property name="fileFolderService" ref="fileFolderService" />
+		<property name="nodeService" ref="nodeService" />
+		<property name="contentService" ref="contentService" />
+		<property name="searchService" ref="searchService" />
+		<property name="propertyReader" ref="propertyReader" />
+		<property name="namespaceService" ref="namespaceService" />
+		<property name="serviceVersantHelper" ref="ServiceVersantHelper" />
+	</bean>
+
+	<bean id="webscript.saem.is-workflow-launchable.get"
+		class="eu.akka.saem.alfresco.webscript.IsWorkflowLaunchableBean"
+		parent="webscript">
+		<property name="nodeService" ref="nodeService" />
+		<property name="workflowService" ref="WorkflowService" />
+	</bean>
+	
+	<bean id="webscript.saem.is-archive-modifiable.get"
+		class="eu.akka.saem.alfresco.webscript.IsArchiveModifiableBean"
+		parent="webscript">
+		<property name="nodeService" ref="nodeService" />
+		<property name="permissionService" ref="permissionService" />
+	</bean>
+	
+	<bean id="webscript.saem.is-archive-bordereau-viewable.get"
+		class="eu.akka.saem.alfresco.webscript.IsArchiveBordereauViewableBean"
+		parent="webscript">
+		<property name="nodeService" ref="nodeService" />
+		<property name="permissionService" ref="permissionService" />
+	</bean>
+	
+	<bean id="webscript.saem.is-document-bordereau-viewable.get"
+		class="eu.akka.saem.alfresco.webscript.IsDocumentBordereauViewableBean"
+		parent="webscript">
+		<property name="nodeService" ref="nodeService" />
+		<property name="permissionService" ref="permissionService" />
+	</bean>
+	
+	<bean id="webscript.saem.is-restitution-launchable.get"
+		class="eu.akka.saem.alfresco.webscript.IsRestitutionLaunchableBean"
+		parent="webscript">
+		<property name="nodeService" ref="nodeService" />
+	</bean>
+
+	<bean id="webscript.saem.is-elimination-launchable.get"
+		class="eu.akka.saem.alfresco.webscript.IsEliminationLaunchableBean"
+		parent="webscript">
+		<property name="nodeService" ref="nodeService" />
+	</bean>
+
+	<bean id="webscript.saem.elimination-confirmation.get"
+		class="eu.akka.saem.alfresco.webscript.EliminationConfirmation"
+		parent="webscript">
+		<property name="nodeService" ref="nodeService" />
+		<property name="workflowService" ref="WorkflowService" />
+		<property name="searchService" ref="searchService" />
+	</bean>
+
+	<bean id="webscript.saem.get-elimination-response.get"
+		class="eu.akka.saem.alfresco.webscript.GetEliminationResponse"
+		parent="webscript">
+		<property name="nodeService" ref="nodeService" />
+		<property name="searchService" ref="searchService" />
+	</bean>
+
+	<bean id="webscript.saem.expired-dua.get" class="eu.akka.saem.alfresco.webscript.GetDuaExpireesBean"
+		parent="webscript">
+		<property name="searchService" ref="searchService" />
+		<property name="propertyReader" ref="propertyReader" />
+		<property name="nodeService" ref="nodeService" />
+	</bean>
+	
+	<bean id="webscript.saem.myTreatments.get" class="eu.akka.saem.alfresco.webscript.GetTreatmentsBean"
+		parent="webscript">
+		<property name="searchService" ref="searchService" />
+		<property name="propertyReader" ref="propertyReader" />
+		<property name="nodeService" ref="nodeService" />
+		<property name="authenticationService" ref="authenticationService" />
+		<property name="personService" ref="personService" />
+		<property name="authorityService" ref="authorityService" />
+	</bean>
+	
+	<bean id="webscript.saem.preVersementDestination.get" class="eu.akka.saem.alfresco.webscript.GetDestinationPreVersement"
+		parent="webscript">
+		<property name="searchService" ref="searchService" />
+		<property name="nodeService" ref="nodeService" />
+	</bean>
+	
+
+	<bean id="ServiceVersantHelper" parent="baseJavaScriptExtension"
+		class=" eu.akka.saem.alfresco.helper.ServiceVersantHelper">
+		<property name="extensionName">
+			<value>ServiceVersantHelper</value>
+		</property>
+		<property name="siteService" ref="siteService" />
+		<property name="permissionService" ref="permissionService" />
+		<property name="propertyReader" ref="propertyReader" />
+	</bean>
+
+	<bean id="asalaeUtils" class="eu.akka.saem.alfresco.connector.asalae.util.AsalaeUtils" />
+
+	<bean id="zipUtils" class="eu.akka.saem.alfresco.utils.ZipUtils">
+		<property name="nodeService" ref="nodeService" />
+		<property name="contentService" ref="contentService" />
+		<property name="dictionaryService" ref="dictionaryService" />
+	</bean>
+</beans>

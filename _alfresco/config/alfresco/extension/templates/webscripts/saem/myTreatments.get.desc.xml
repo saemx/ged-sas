@@ -1,0 +1,7 @@
+<webscript>
+  <shortname>my-treatments</shortname>
+  <description>Return treatments</description>
+  <url>/saem/myTreatments</url>
+  <format default="json">argument</format>
+  <authentication>user</authentication>
+</webscript>

@@ -1,0 +1,615 @@
+.saem-form-main{
+    
+}
+
+html {
+    
+}
+
+.saem-form-main-top-border{
+    height:1px; background-color:#ccc;
+}
+
+.saem-form-menu{
+    float:left;
+    width:230px;
+    padding-left:10px;
+    height:100%;
+    position:relative;
+	overflow-y:scroll;
+}
+
+.saem-form-content{
+    float:right;
+    width:100%;
+    margin-left:-50em;
+	overflow-y:scroll;
+}
+
+.saem-form-content-margin{
+    margin-left:240px;
+}
+
+.saem-form-content-general-buttons{
+    padding:10px; border-bottom:solid 1px #eee; height:25px;
+}
+
+.saem-form-content-ariane{
+    border-bottom: 1px solid #EEEEEE;
+    padding-bottom: 10px;
+    padding-left: 5px;
+}
+
+.saem-form-content-mode-buttons{
+	margin-top:5px;
+	float:right;
+    top:11px; 
+    right:0px; 
+    width:85px;
+}
+
+.saem-form-move-div{
+    position:absolute; right:0px; width:5px; top:0px; bottom:0px; background-color:#eee;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.saem-form-move-div:hover{
+    background-color:#ccc;
+    cursor: ew-resize;
+}
+
+.saem-form-move-hover{
+    background-color:#666;
+}
+
+.saem-form-move-div-normal{
+    position:absolute; top: 45%; height:16px; width:5px; background: transparent url(layout_sprite.png) no-repeat 0 -5px;
+}
+
+.saem-root-cat{
+text-align: left;font: 13px/1.231 Open Sans,arial,helvetica,clean,sans-serif;color: #333;   margin: 0;
+    padding-left: 5px;
+    padding-top: 20px;
+}
+
+.saem-cat-inf-td-name-link{
+    
+    white-space: nowrap;
+}
+
+.saem-root-cat-inf-td-name-link{
+    font-size: 123.1%;
+    font-weight: normal;margin-top: 1em;
+    cursor: pointer;
+    display: block;
+    -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    text-align: left;
+    font-family: 'Open Sans', arial, helvetica, clean, sans-serif;    
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1.231;
+    color: #333;
+    margin:0;
+    
+}
+
+.saem-hover:hover{
+    cursor: pointer;
+}
+
+
+.saem-form-button{
+    float: left;margin: 0;display: block;visibility: visible;text-align: left;font-family: 'Open Sans', arial, helvetica, clean, sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1.231;
+    color: #333;
+}
+
+.saem-form-create-content{
+    background: none;
+    border-color:transparent;
+    border-width: 1px 1px;
+    border-style: solid;
+    margin: auto .25em;display: inline-block;
+    vertical-align: text-bottom;text-align: left;
+}
+
+.saem-form-create-content-hover{
+    border-color: #ccc;    
+}
+
+.saem-form-create-content-selec{
+    border-color: #666;    
+}
+
+.saem-form-first-child{
+    border-color: transparent;background-color: transparent;
+    background-position: 6px 4px;
+    background-repeat: no-repeat;
+    padding-left: 16px;background: none;border-width: 0 1px;
+    border-style: solid;margin: 0 -1px;display: block;
+}
+
+
+.saem-form-first-child button{
+    font-family: 'Open Sans', arial, helvetica, clean, sans-serif;
+    font-size: 99%;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: normal;padding-right: 20px;
+    background-position: right center;
+    background-repeat: no-repeat;padding: 0 10px;min-height: 2em;
+    color: #000;background-color: transparent;
+    cursor: pointer;display: block;
+    border: none;
+    margin: 0;
+    -webkit-box-align: center;
+    text-align: center;
+    box-sizing: border-box;letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    -webkit-writing-mode: horizontal-tb;-webkit-appearance: button;
+}
+
+
+.saem-button-save{
+    background-image:url(sauvegarder.png);background-color: transparent;background-position: 6px 4px;background-repeat: no-repeat;padding-left: 16px;
+}
+
+.saem-button-soumettre{
+    background-image:url(soumettre.png);background-color: transparent;background-position: 6px 4px;background-repeat: no-repeat;padding-left: 16px;
+}
+
+
+.saem-form-content-mode-buttons-first-child{
+    border-color: transparent;
+    border-width:1px;
+    border-style: solid;margin: auto .25em;display: inline-block;   
+    display:block;
+}
+
+.saem-form-content-mode-buttons-first-child-hover{
+    border-color: #ccc;  
+}
+
+.saem-form-content-mode-buttons-first-child button{
+font-family: 'Open Sans', arial, helvetica, clean, sans-serif;
+font-size: 99%;
+font-style: normal;
+font-variant: normal;
+font-weight: normal;
+line-height: normal;color: #000;padding: 0 10px;background-image: none;background-color: transparent;
+cursor: pointer;display: block;
+border: none;
+margin: 0;-webkit-box-align: center;
+text-align: center;box-sizing: border-box;letter-spacing: normal;
+word-spacing: normal;
+text-transform: none;
+text-indent: 0px;
+text-shadow: none;-webkit-writing-mode: horizontal-tb;-webkit-appearance: button;
+}
+
+.saem-form-content-mode-buttons-content{
+    background: none;margin-left: 0;
+    margin-right: 0;border-width: 1px 1px;
+    vertical-align: text-bottom;text-align: right;font-family: 'Open Sans', arial, helvetica, clean, sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    display:inline-block;
+    line-height: 1.231;color: #333;
+}
+
+.saem-form-content-mode-buttons-first-child-expert-hide{
+    background-image: url(vudetaille_hide.png);background-position: 50% 50%;background-repeat: no-repeat;height: 16px; width: 16px;padding: 4px 4px 4px 4px;
+}
+
+.saem-form-content-mode-buttons-first-child-simple-hide{
+    background-image: url(vue_hide.png);background-position: 50% 50%;background-repeat: no-repeat;height: 16px; width: 16px;padding: 4px 4px 4px 4px;
+}
+
+.saem-form-content-ariane-element{
+    display:inline-block;
+    height: 16px;
+    margin: 0;
+    padding: 8px 0 0 4px;
+}
+
+.saem-form-content-ariane-element-first-child{
+    background-image: url("folderup.png");
+    background-position: 2px 30%;
+    background-repeat: no-repeat;
+    border: 1px solid transparent;
+    color: #000000;
+    font-size: 100%;
+    line-height: 1.4em;
+    margin-left: -1px;
+    padding: 2px 0 3px 16px;
+    text-decoration: none;
+}
+
+.saem-form-content-ariane-element-first-child.saem-root{
+    background-image: url("folderup_disabled.png");
+}
+
+.saem-form-content-ariane-element-first-child-disabled{
+    background-image: url(folderup_disabled.png);    
+}
+
+.saem-form-content-ariane-element-first-child-hover{
+    border-color: #CCC;
+    
+}
+
+.saem-form-content-ariane-element-first-child button{
+padding: 0;
+    width: 1px; margin: 0;
+    background-color: transparent;
+    background-image: none;
+    border: medium none;
+    color: #A6A6A6;
+    cursor: default;
+}
+
+.saem-form-content-ariane-separator{
+border-right: 1px solid #CCCCCC;
+    display: inline-block;
+}
+
+.saem-form-content-ariane-separator2{
+    display: inline-block;
+    padding-left:5px;
+}
+
+.saem-form-content-ariane-element-folder{
+    background-image: url(folder-open-16.png);
+    border: 1px solid transparent;
+    background-position: 2px 50%;
+    background-repeat: no-repeat;
+    margin-left: -1px;
+    padding: 2px 0 3px 16px;
+    color: #000000;
+    text-decoration: none;
+    font-size: 100%;
+    line-height: 1.4em;
+}
+
+.saem-form-content-ariane-element-text a{
+    color: #000000;
+    text-decoration: none;font-weight: normal;font-size: 100%;
+    line-height: 1.4em;
+    font: 13px/1.231 arial,helvetica,clean,sans-serif;
+}
+
+.saem-form-content-element{
+    border-bottom: 1px solid #EEEEEE;
+    padding: 5px;
+    position:relative;
+}
+
+.saem-form-content-element-inf{
+    width:100%;
+}
+
+.saem-form-content-element-inf-label{
+    text-align: left;color: #333333;    
+    font-size: 17px;
+    font-weight: normal;
+    word-wrap: break-word;font-weight: normal !important;border-collapse: separate;
+    border-spacing: 0;
+    font-family: open sans,arial;
+}
+
+.saem-form-content-element-inf-obligatoire{
+    font: 13px Open Sans,arial,helvetica,clean,sans-serif;color: green;
+
+}
+
+.saem-form-content-element-inf-erreur{
+    text-align: right;
+    font: 13px/1.231 Open Sans,arial,helvetica,clean,sans-serif;color: red;
+    margin-left: 0.4em;
+    margin-right: 0.4em;
+}
+
+.saem-form-content-element-e{
+    width:100%;
+}
+
+.saem-form-content-element-e-col1{
+    width:50px;
+    text-align:center;
+}
+
+.saem-form-content-element-e-col1 button{
+    border: none;
+    background: url(aide.png);
+    background-repeat: no-repeat;
+    height:16px;  
+    width:16px;
+}
+
+.saem-form-content-element-value [input="text"] input{
+    width:99.5%;
+}
+
+.saem-form-content-element-value [input="textarea"] textarea{
+    width:99.5%;
+}
+
+.saem-cat{
+    padding-left:25px;
+    overflow-x: hidden;
+}
+
+.saem-root-cat{
+    padding-top:3px;
+    padding-bottom: 3px;
+}
+
+.saem-root-cat-inf{
+    width:100%;
+    padding-top:2px;
+    padding-bottom:2px;
+}
+
+.saem-root-cat-title-nberreur{
+    width:10px;
+    color:red;
+    font: 13px/1.231 Open Sans,arial,helvetica,clean,sans-serif;color: red;
+    text-align: right;
+}
+
+.saem-cat-inf{
+    width:100%;
+    padding-top:2px;
+    padding-bottom:2px;
+}
+
+.saem-cat-inf-nberreur{
+    width:10px;
+    color:red;
+    font: 13px/1.231 Open Sans,arial,helvetica,clean,sans-serif;color: red;
+    text-align: right;
+}
+
+
+.saem-root-cat-inf-td-folder{    
+    width:18px;
+    padding-left:5px;
+}
+
+.saem-cat-inf-td-folder{
+    width:18px;
+    padding-left:5px;
+}
+
+.saem-root-cat-inf-td-folder a{    
+    width:18px;
+    display:block;
+    width:16px;
+    height:10px;
+    background-image: url(expanded.png);
+    background-repeat: no-repeat;
+}
+
+.saem-root-cat-inf-td-folder a.close{    
+    width:18px;
+    display:block;
+    width:16px;
+    height:10px;
+    background-image: url(notexpanded.png);
+    background-repeat: no-repeat;
+}
+
+.saem-cat-inf-td-folder a{
+    width:18px;
+    display:block;
+    width:16px;
+    height:16px;
+    background-image: url(folder-open-16.png);
+    background-repeat: no-repeat;
+}
+
+.saem-cat-inf-td-folder a.close{
+    width:18px;
+    display:block;
+    width:16px;
+    height:16px;
+    background-image: url(folder-closed-16.png);
+    background-repeat: no-repeat;
+}
+
+.saem-cat-inf-td-file{
+    width:18px;
+    padding-left:5px;
+}
+
+.saem-cat-inf-td-file a{
+    width:18px;
+    display:block;
+    width:16px;
+    height:16px;
+    background-image: url(category-16.png);
+    background-repeat: no-repeat;
+}
+
+
+
+.saem-cat-inf-td-name{
+    font: 13px/1.231 Open Sans,arial,helvetica,clean,sans-serif;
+    padding-left:5px;
+}
+
+.saem-cat-first{
+    padding-left:0px;
+}
+
+.saem-form-content-element-inf-list-add{
+    text-align: right;
+    width:18px;
+}
+
+.saem-form-content-element-inf-list-add-button{
+    display:block;
+    width:16px;
+    height:16px;
+    margin-left:5px;
+    margin-right:5px;
+    background-image: url(add.png);
+    background-repeat: no-repeat;
+}
+
+.saem-form-content-element-list-value{
+    border-top: 1px solid #EEEEEE; 
+    border-left: 1px solid #EEEEEE;   
+}
+
+.saem-form-content-element-list{
+    border-bottom: 1px solid #EEEEEE;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+.saem-form-content-element-inf-list-del{
+    width:18px;
+}
+
+.saem-loader{
+    display:none;
+    position: absolute;
+    left:0px;
+    right:0px;
+    top:0px;
+    bottom:0px;
+    background-color: #000;
+    opacity: 0.5;
+}
+
+.saem-loader-zone{
+    position: absolute;
+    top:45%;
+    width: 100%;
+}
+
+.saem-loader-text{
+    color:#fff;
+}
+
+
+.saem-form-content-element-list-element-table{
+    width:100%;
+}
+
+.saem-form-content-element-list-element{
+   padding-top:5px;
+   padding-left:10px;
+}
+
+.saem-form-content-element-inf-list-del-button{
+   display:block;
+    width:16px;
+    height:16px;
+    margin-left:5px;
+    margin-right:5px;
+    
+    background-image: url(suppr.png);
+    background-repeat: no-repeat; 
+}
+
+.saem-form-content-element-inf-list-element-label{
+    text-align: left;color: #333333;    
+    font-size: 14px;
+    font-weight: normal;
+    word-wrap: break-word;font-weight: normal !important;border-collapse: separate;
+    border-spacing: 0;
+    font-family: open sans,arial;
+}
+
+
+.saem-form-content-mode-buttons-first-child-expert{
+    border-color: #ccc;
+    background-image: url(vue_detaille.png);background-position: 50% 50%;background-repeat: no-repeat;height: 16px; width: 16px;padding: 4px 4px 4px 4px;
+}
+
+.saem-form-content-mode-buttons-first-child-simple{
+    border-color: #ccc;
+    background-image: url(vue.png);background-position: 50% 50%;background-repeat: no-repeat;height: 16px; width: 16px;padding: 4px 4px 4px 4px;
+}
+
+.saem-cat-inf-sel{
+    background-color:#eee;    
+}
+
+.saem-form-content-element-help{
+ z-index: 4;
+width: 30em;
+left: 20px;
+top: 0px;
+visibility: visible;
+opacity: 1;font-family: 'Open Sans', arial, helvetica, clean, sans-serif;
+font-size: 13px;
+font-style: normal;
+font-variant: normal;
+font-weight: normal;
+line-height: 1.231;
+position: absolute;color: #333;
+}
+
+.saem-form-content-element-help-balloon{
+    background: #35403f;
+color: #e8e8e8;border: 1px solid #2c3635;box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+margin-bottom: 10px;
+min-width: 20em;border-radius: 6px !important;
+padding: 10px 12px !important;
+font-size: 91%;
+}
+
+.saem-form-content-element-help-balloon::after{
+width: 0;
+height: 0;
+border-right: 7px solid transparent;
+border-left: 7px solid transparent;
+border-top: 7px solid #2C3635;
+display: block;
+content: " ";
+position: absolute;
+bottom: 4px;
+left: 50px;
+}
+
+.saem-form-content-element-help-closeButton{
+   cursor: pointer;
+color: #888;
+float: right;
+left: 6px;
+position: relative;
+top: -7px;
+font-weight: bold; 
+}
+
+.saem-form-content-element-help-balloon-arrow{
+    
+}
+
+.saem-dateicone{
+    background-image: url(calendar-16-2.png);
+    display:inline-block;
+    width:16px;
+    height:16px;
+    margin-left:5px;
+    margin-rigth:5px;
+}

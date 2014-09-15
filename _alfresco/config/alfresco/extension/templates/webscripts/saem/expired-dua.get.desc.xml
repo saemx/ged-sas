@@ -1,0 +1,7 @@
+<webscript>
+  <shortname>expired-dua</shortname>
+  <description>Return Expired DUA</description>
+  <url>/saem/expired-dua</url>
+  <format default="json">argument</format>
+  <authentication>user</authentication>
+</webscript>

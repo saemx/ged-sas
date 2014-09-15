@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model name="saemwf:saemwfmodel" xmlns="http://www.alfresco.org/model/dictionary/1.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<description>SAEM Worflow Model</description>
+	<author>AKKA</author>
+	<version>1.0</version>
+
+	<!-- Imports are required to allow references to definitions in other models -->
+	<imports>
+		<!-- Import Alfresco Dictionary Definitions -->
+		<import uri="http://www.alfresco.org/model/dictionary/1.0"
+			prefix="d" />
+		<!-- Import Alfresco Content Domain Model Definitions -->
+		<import uri="http://www.alfresco.org/model/bpm/1.0" prefix="bpm" />
+		<!-- Import Alfresco Content Domain Model Definitions -->
+		<import uri="http://www.alfresco.org/model/content/1.0" prefix="cm" />
+		<!-- Import Alfresco Content Domain Model Definitions -->
+		<import uri="http://www.alfresco.org/model/bpm/1.0" prefix="wf" />
+	</imports>
+
+	<namespaces>
+		<namespace uri="http://www.akka.com/model/workflows/1.0"
+			prefix="saemwf" />
+	</namespaces>
+
+	<types>
+		<type name="saemwf:activitiSAValidation">
+			<parent>bpm:activitiOutcomeTask</parent>
+			<properties>
+				<property name="saemwf:SAValidationApproveRejectOutcome">
+					<type>d:text</type>
+					<default>Rejeter</default>
+					<constraints>
+						<constraint type="LIST">
+							<parameter name="allowedValues">
+								<list>
+									<value>Accepter</value>
+									<value>Rejeter</value>
+								</list>
+							</parameter>
+						</constraint>
+					</constraints>
+				</property>
+			</properties>
+			<overrides>
+				<property name="bpm:packageItemActionGroup">
+					<default>read_package_item_actions</default>
+				</property>
+				<property name="bpm:outcomePropertyName">
+					<default>{http://www.akka.eu/model/workflows/1.0}SAValidationApproveRejectOutcome
+					</default>
+				</property>
+			</overrides>
+			<mandatory-aspects>
+				<aspect>saemwf:VersementVariables</aspect>
+			</mandatory-aspects>
+		</type>
+		<type name="saemwf:activitiSVValidation">
+			<parent>bpm:activitiOutcomeTask</parent>
+			<properties>
+				<property name="saemwf:SVValidationApproveRejectOutcome">
+					<type>d:text</type>
+					<default>Rejeter</default>
+					<constraints>
+						<constraint type="LIST">
+							<parameter name="allowedValues">
+								<list>
+									<value>Accepter</value>
+									<value>Rejeter</value>
+								</list>
+							</parameter>
+						</constraint>
+					</constraints>
+				</property>
+			</properties>
+			<overrides>
+				<property name="bpm:packageItemActionGroup">
+					<default>read_package_item_actions</default>
+				</property>
+				<property name="bpm:outcomePropertyName">
+					<default>{http://www.akka.eu/model/workflows/1.0}SVValidationApproveRejectOutcome
+					</default>
+				</property>
+			</overrides>
+			<mandatory-aspects>
+				<aspect>saemwf:VersementVariables</aspect>
+			</mandatory-aspects>
+		</type>
+		<type name="saemwf:activitiSVConfirmation">
+			<parent>bpm:activitiOutcomeTask</parent>
+			<mandatory-aspects>
+				<aspect>saemwf:VersementVariables</aspect>
+			</mandatory-aspects>
+		</type>
+		<type name="saemwf:activitiSVCorrection">
+			<parent>bpm:activitiOutcomeTask</parent>
+			<mandatory-aspects>
+				<aspect>saemwf:VersementVariables</aspect>
+			</mandatory-aspects>
+		</type>
+	</types>
+
+	<aspects>
+		<!-- SAEM-77 : Versement : Variables -->
+		<aspect name="saemwf:VersementVariables">
+			<title>Variables du workflow de versement</title>
+			<properties>
+				<property name="saemwf:SAValidation">
+					<type>d:boolean</type>
+					<protected>false</protected>
+				</property>
+				<property name="saemwf:comment">
+					<type>d:text</type>
+					<mandatory>false</mandatory>
+					<multiple>false</multiple>
+				</property>
+			</properties>
+		</aspect>
+	</aspects>
+</model>

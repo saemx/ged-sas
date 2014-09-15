@@ -1,0 +1,8 @@
+<webscript>
+  <shortname>create-archive</shortname>
+  <description>Create Archive</description>
+  <url>/saem/create-archive</url>
+  <format default="json">argument</format>
+  <authentication>user</authentication>
+  <transaction>required</transaction>
+</webscript>

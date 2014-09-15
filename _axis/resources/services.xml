@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file was auto-generated from WSDL -->
+<!-- by the Apache Axis2 version: 1.6.1  Built on : Aug 31, 2011 (12:22:40 CEST) -->
+<serviceGroup>
+    <service name="service">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="eu.akka.alfresco.axis2.asalae.ServerServiceMessageReceiverInOut"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">eu.akka.alfresco.axis2.asalae.ServerServiceSkeleton</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">false</parameter>
+        <operation name="wsDepot" mep="http://www.w3.org/ns/wsdl/in-out" namespace="urn:server">
+            <actionMapping>urn:WebServiceAction</actionMapping>
+            <outputActionMapping>urn:server:WebServicePortType:wsDepotResponse</outputActionMapping>
+        </operation>
+         <operation name="wsRestitution" mep="http://www.w3.org/ns/wsdl/in-out" namespace="urn:server">
+            <actionMapping>urn:WebServiceAction</actionMapping>
+            <outputActionMapping>urn:server:WebServicePortType:wsRestitutionResponse</outputActionMapping>
+        </operation>
+        <operation name="wsCompleterBordereau" mep="http://www.w3.org/ns/wsdl/in-out" namespace="urn:server">
+            <actionMapping>urn:WebServiceAction</actionMapping>
+            <outputActionMapping>urn:server:WebServicePortType:wsCompleterBordereauResponse</outputActionMapping>
+        </operation>
+        <operation name="wsElimination" mep="http://www.w3.org/ns/wsdl/in-out" namespace="urn:server">
+            <actionMapping>urn:WebServiceAction</actionMapping>
+            <outputActionMapping>urn:server:WebServicePortType:wsEliminationResponse</outputActionMapping>
+        </operation>
+        <operation name="wsGetDuaExpirees" mep="http://www.w3.org/ns/wsdl/in-out" namespace="urn:server">
+            <actionMapping>urn:WebServiceAction</actionMapping>
+            <outputActionMapping>urn:server:WebServicePortType:wsGetDuaExpireesResponse</outputActionMapping>
+        </operation>
+        <operation name="wsGetPathRepoBigFile" mep="http://www.w3.org/ns/wsdl/in-out" namespace="urn:server">
+            <actionMapping>urn:WebServiceAction</actionMapping>
+            <outputActionMapping>urn:server:WebServicePortType:wsGetPathRepoBigFileResponse</outputActionMapping>
+        </operation>
+        <operation name="wsModificationNotification" mep="http://www.w3.org/ns/wsdl/in-out" namespace="urn:server">
+            <actionMapping>urn:WebServiceAction</actionMapping>
+            <outputActionMapping>urn:server:WebServicePortType:wsModificationNotificationResponse</outputActionMapping>
+        </operation>
+        <operation name="wsCreateMessageValidation" mep="http://www.w3.org/ns/wsdl/in-out" namespace="urn:server">
+            <actionMapping>urn:WebServiceAction</actionMapping>
+            <outputActionMapping>urn:server:WebServicePortType:wsCreateMessageValidationResponse</outputActionMapping>
+        </operation>
+        <operation name="wsMessageValidationState" mep="http://www.w3.org/ns/wsdl/in-out" namespace="urn:server">
+            <actionMapping>urn:WebServiceAction</actionMapping>
+            <outputActionMapping>urn:server:WebServicePortType:wsMessageValidationStateResponse</outputActionMapping>
+        </operation>
+        <operation name="wsGetVersion" mep="http://www.w3.org/ns/wsdl/in-out" namespace="urn:server">
+            <actionMapping>urn:WebServiceAction</actionMapping>
+            <outputActionMapping>urn:server:WebServicePortType:wsGetVersionResponse</outputActionMapping>
+        </operation>
+        <operation name="wsGetMessage" mep="http://www.w3.org/ns/wsdl/in-out" namespace="urn:server">
+            <actionMapping>urn:WebServiceAction</actionMapping>
+            <outputActionMapping>urn:server:WebServicePortType:wsGetMessageResponse</outputActionMapping>
+        </operation>
+        <operation name="wsGSeda" mep="http://www.w3.org/ns/wsdl/in-out" namespace="urn:server">
+            <actionMapping>urn:WebServiceAction</actionMapping>
+            <outputActionMapping>urn:server:WebServicePortType:wsGSedaResponse</outputActionMapping>
+        </operation>
+    </service>
+</serviceGroup>

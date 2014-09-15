@@ -1,0 +1,7 @@
+<webscript>
+  <shortname>is-document-bordereau-viewable</shortname>
+  <description>Evaluates if a document bordereau is viewable</description>
+  <url>/saem/is-document-bordereau-viewable</url>
+  <format default="json">argument</format>
+  <authentication>user</authentication>
+</webscript>

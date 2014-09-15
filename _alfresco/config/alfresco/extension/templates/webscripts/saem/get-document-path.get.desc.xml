@@ -1,0 +1,7 @@
+<webscript>
+  <shortname>Get document path</shortname>
+  <description>Get document path</description>
+   <url>/saem/search?folderId={folderId?}</url>
+   <format default="json">argument</format>
+   <authentication>user</authentication>
+</webscript>

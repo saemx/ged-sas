@@ -1,0 +1,8 @@
+<webscript>
+  <shortname>Get profils SEDA</shortname>
+  <description>Get profils SEDA</description>
+  <url>/saem/get-profils-seda</url>
+  <format default="json">argument</format>
+  <transaction>required</transaction>
+  <authentication>user</authentication>
+</webscript>

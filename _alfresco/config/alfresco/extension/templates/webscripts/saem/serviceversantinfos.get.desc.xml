@@ -1,0 +1,8 @@
+<webscript>
+    <shortname>Get Service Versant info</shortname>
+    <description>Return informations for New Archive Create Button</description>
+    <url>/saem/serviceversantinfos?siteName={siteName}</url>
+    <authentication>user</authentication>
+    <format default="json">extension</format>
+    <transaction>required</transaction>
+</webscript>

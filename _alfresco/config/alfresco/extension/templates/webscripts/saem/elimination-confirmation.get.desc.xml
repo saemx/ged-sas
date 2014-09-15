@@ -1,0 +1,8 @@
+
+<webscript>
+  <shortname>elimination-confirmation</shortname>
+  <description>launches the one-step workflow that confirms an elimination</description>
+  <url>/saem/elimination-confirmation?archiveIdentifier={archiveIdentifier}</url>
+  <format default="json">argument</format>
+  <authentication>user</authentication>
+</webscript>

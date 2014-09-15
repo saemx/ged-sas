@@ -1,0 +1,7 @@
+<webscript>
+  <shortname>is-restitution-launchable</shortname>
+  <description>Evaluates if an restitution is launchable</description>
+  <url>/saem/is-restitution-launchable</url>
+  <format default="json">argument</format>
+  <authentication>user</authentication>
+</webscript>

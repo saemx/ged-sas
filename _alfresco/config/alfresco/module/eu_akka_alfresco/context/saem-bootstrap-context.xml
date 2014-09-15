@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+<beans>
+
+    <!-- Ajout du fichier saem.properties dans les fichiers de propriétés pris en compte -->
+    <!-- Global properties used in property expansion throughout the container, overridable 
+        via JNDI or System properties -->
+    <bean id="global-properties" class="org.alfresco.config.JndiPropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>classpath:alfresco/repository.properties</value>
+                <value>classpath:alfresco/domain/transaction.properties</value>
+                <!-- Enterprise defaults -->
+                <!-- Overrides supplied if this is an enterprise install (none exist for community) -->
+                <value>classpath*:alfresco/enterprise/repository.properties</value>
+                <!-- <value>classpath:alfresco/jndi.properties</value> -->
+                <!-- Overrides supplied by modules -->
+                <value>classpath*:alfresco/module/*/alfresco-global.properties</value>
+                <!-- Installer or user-provided defaults -->
+                <value>classpath*:alfresco-global.properties</value>
+                <value>classpath*:saem.properties</value>
+            </list>
+        </property>
+        <property name="systemPropertiesModeName">
+            <value>SYSTEM_PROPERTIES_MODE_OVERRIDE</value>
+        </property>
+        <!-- Extra properties that have no defaults that we allow to be defined through JNDI 
+            or System properties -->
+        <property name="systemProperties">
+            <list>
+                <value>hibernate.dialect</value>
+                <value>hibernate.query.substitutions</value>
+                <value>hibernate.jdbc.use_get_generated_keys</value>
+                <value>hibernate.default_schema</value>
+            </list>
+        </property>
+        <property name="propertiesPersister">
+            <bean class="org.alfresco.config.AlfrescoPropertiesPersister" />
+        </property>
+    </bean>
+
+    <!-- Ce bean va permettre la création automatique du dossier systeme profil SEDA -->
+    <bean id="createProfilSedaSystemFolderOnBootStrap"
+        class="eu.akka.saem.alfresco.bootstrap.CreateProfilSedaSystemFolderOnBootStrap"
+        init-method="init">
+        <property name="nodeService" ref="nodeService" />
+        <property name="ruleService" ref="ruleService" />
+        <property name="fileFolderService" ref="fileFolderService" />
+        <property name="propertyReader" ref="propertyReader" />
+        <property name="actionService" ref="actionService" />
+        <property name="retryingTransactionHelper" ref="retryingTransactionHelper" />
+    </bean>
+
+    <bean id="emailTemplatesBootstrap" parent="spacesStoreImporter" singleton="true">
+        <property name="useExistingStore">
+            <value>${deploy.custom.content}</value>
+        </property>
+        <property name="bootstrapViews">
+            <list>
+                <props>
+                    <prop key="path">/${spaces.company_home.childname}/${spaces.dictionary.childname}/${spaces.templates.email.childname}</prop>
+                    <prop key="location">alfresco/module/eu_akka_alfresco/bootstrap/config_email_templates.xml</prop>
+                </props>
+            </list>
+        </property>
+    </bean>
+
+    <!-- Extend timeout to 6 hours -->
+    <bean id="ticketComponent" class="org.alfresco.repo.security.authentication.InMemoryTicketComponentImpl">
+        <property name="ticketsCache">
+            <ref bean="ticketsCache" />
+        </property>
+        <!-- The period for which tickets are valid in XML duration format. -->
+        <!-- The default is P1H for one hour. or PT1H -->
+        <property name="validDuration">
+            <value>P6H</value>
+        </property>
+        <!-- Do tickets expire or live for ever? -->
+        <property name="ticketsExpire">
+            <value>true</value>
+        </property>
+        <!-- Are tickets only valid for a single use? -->
+        <property name="oneOff">
+            <value>false</value>
+        </property>
+        <!-- If ticketsEpire is true then how they should expire -->
+        <!-- AFTER_INACTIVITY, AFTER_FIXED_TIME, DO_NOT_EXPIRE -->
+        <!-- The default is AFTER_FIXED_TIME -->
+        <property name="expiryMode">
+            <value>AFTER_FIXED_TIME</value>
+        </property>
+    </bean>
+
+</beans>

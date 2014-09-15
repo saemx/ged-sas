@@ -1,0 +1,7 @@
+<!-- SAEM-80 Dashlets -->
+<webscript>
+   <shortname>DUA expirées</shortname>
+   <description>Dashlet affichant les archives à DUA expirée</description>
+   <family>site-dashlet</family>
+   <url>/saem/components/dashlets/expired-dua</url>
+</webscript>

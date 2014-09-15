@@ -1,0 +1,30 @@
+<extension>
+    <modules>
+        <module>
+            <id>SEDA folder details</id>
+            <components>
+                <component>
+                    <region-id>folder-metadata</region-id>
+                    <source-id>folder-details</source-id>
+                    <scope>template</scope>
+                    <sub-components>
+                        <sub-component id="folder-seda-metadata" index="25">
+                            <url>/saem/components/folder-details/folder-seda-metadata
+                            </url>
+                            <evaluations>
+                                <evaluation id="HideIfNotSEDA">
+                                    <evaluators>
+                                        <evaluator
+                                            type="eu.akka.saem.share.evaluator.hideSedaProperties"></evaluator>
+                                    </evaluators>
+                                    <render>false</render>
+                                </evaluation>
+                            </evaluations>
+                        </sub-component>
+                    </sub-components>
+                </component>
+            </components>
+            <auto-deploy>true</auto-deploy>
+        </module>
+    </modules>
+</extension>

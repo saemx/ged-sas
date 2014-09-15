@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://alfresco.org">
+  <process id="wfVersement" name="Versement" isExecutable="true">
+    <documentation>Workflow de versement d'une archive</documentation>
+    <startEvent id="start" name="start" activiti:formKey="bpm:startTask"></startEvent>
+    <userTask id="saValidation" name="Validation d'un versement" activiti:candidateGroups="GROUP_GG_APP_GED_ARCHIVE" activiti:formKey="saemwf:activitiSAValidation">
+      <extensionElements>
+        <activiti:taskListener event="create" class="eu.akka.saem.alfresco.workflow.SAValidation"></activiti:taskListener>
+        <activiti:taskListener event="complete" class="eu.akka.saem.alfresco.workflow.SAValidation"></activiti:taskListener>
+        <activiti:taskListener event="create" class="eu.akka.saem.alfresco.workflow.versement.SetCommentaries"></activiti:taskListener>
+        <activiti:taskListener event="complete" class="eu.akka.saem.alfresco.workflow.versement.SetCommentaries"></activiti:taskListener>
+      </extensionElements>
+    </userTask>
+    <userTask id="svCorrection" name="Correction d'un versement" activiti:candidateGroups="GROUP_GG_APP_GED_VERSANT" activiti:formKey="saemwf:activitiSVCorrection">
+      <extensionElements>
+        <activiti:taskListener event="create" class="eu.akka.saem.alfresco.workflow.SVCandidateGroupsSetter"></activiti:taskListener>
+        <activiti:taskListener event="create" class="eu.akka.saem.alfresco.workflow.SendMail"></activiti:taskListener>
+        <activiti:taskListener event="create" class="eu.akka.saem.alfresco.workflow.versement.SetCommentaries"></activiti:taskListener>
+        <activiti:taskListener event="complete" class="eu.akka.saem.alfresco.workflow.versement.SetCommentaries"></activiti:taskListener>
+      </extensionElements>
+    </userTask>
+    <userTask id="SVConfirmation" name="Confirmation du versement" activiti:candidateGroups="GROUP_GG_APP_GED_VERSANT" activiti:formKey="saemwf:activitiSVConfirmation">
+      <extensionElements>
+        <activiti:taskListener event="create" class="eu.akka.saem.alfresco.workflow.SVCandidateGroupsSetter"></activiti:taskListener>
+        <activiti:taskListener event="create" class="eu.akka.saem.alfresco.workflow.SendMail"></activiti:taskListener>
+        <activiti:taskListener event="create" class="eu.akka.saem.alfresco.workflow.versement.SetCommentaries"></activiti:taskListener>
+        <activiti:taskListener event="complete" class="eu.akka.saem.alfresco.workflow.versement.SetCommentaries"></activiti:taskListener>
+      </extensionElements>
+    </userTask>
+    <endEvent id="endevent1" name="End"></endEvent>
+    <serviceTask id="startTask" name="Start Task" activiti:class="eu.akka.saem.alfresco.workflow.versement.Start">
+      <extensionElements>
+        <activiti:executionListener event="start" class="eu.akka.saem.alfresco.workflow.versement.SuppressPermissionSV"></activiti:executionListener>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="asalaeConnexion" name="Asalae connexion" activiti:class="eu.akka.saem.alfresco.workflow.versement.AsalaeConnexion"></serviceTask>
+    <serviceTask id="allowPermissionForCorrection" name="Allows to modify the archive" activiti:class="eu.akka.saem.alfresco.workflow.versement.AllowPermissionSV"></serviceTask>
+    <serviceTask id="suppressPermissionForCorrection" name="Suppresses the permission to modify the archive" activiti:class="eu.akka.saem.alfresco.workflow.versement.SuppressPermissionSV"></serviceTask>
+    <sequenceFlow id="flow1" sourceRef="start" targetRef="startTask"></sequenceFlow>
+    <sequenceFlow id="flow2" sourceRef="startTask" targetRef="saValidation"></sequenceFlow>
+    <sequenceFlow id="flow4" sourceRef="SVConfirmation" targetRef="asalaeConnexion"></sequenceFlow>
+    <sequenceFlow id="flow6" sourceRef="allowPermissionForCorrection" targetRef="svCorrection"></sequenceFlow>
+    <sequenceFlow id="flow7" sourceRef="svCorrection" targetRef="suppressPermissionForCorrection"></sequenceFlow>
+    <sequenceFlow id="flow8" sourceRef="suppressPermissionForCorrection" targetRef="saValidation"></sequenceFlow>
+    <sequenceFlow id="flow9" sourceRef="asalaeConnexion" targetRef="endevent1"></sequenceFlow>
+    <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway"></exclusiveGateway>
+    <sequenceFlow id="flow10" sourceRef="exclusivegateway1" targetRef="SVConfirmation">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${saemwf_SAValidation == true}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="flow11" sourceRef="saValidation" targetRef="exclusivegateway1"></sequenceFlow>
+    <sequenceFlow id="flow12" sourceRef="exclusivegateway1" targetRef="allowPermissionForCorrection">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${saemwf_SAValidation == false}]]></conditionExpression>
+    </sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_wfVersement">
+    <bpmndi:BPMNPlane bpmnElement="wfVersement" id="BPMNPlane_wfVersement">
+      <bpmndi:BPMNShape bpmnElement="start" id="BPMNShape_start">
+        <omgdc:Bounds height="35.0" width="35.0" x="-44.0" y="347.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="saValidation" id="BPMNShape_saValidation">
+        <omgdc:Bounds height="55.0" width="105.0" x="249.0" y="337.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="svCorrection" id="BPMNShape_svCorrection">
+        <omgdc:Bounds height="55.0" width="105.0" x="259.0" y="142.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="SVConfirmation" id="BPMNShape_SVConfirmation">
+        <omgdc:Bounds height="55.0" width="105.0" x="496.0" y="337.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent1" id="BPMNShape_endevent1">
+        <omgdc:Bounds height="35.0" width="35.0" x="803.0" y="347.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="startTask" id="BPMNShape_startTask">
+        <omgdc:Bounds height="55.0" width="105.0" x="46.0" y="337.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="asalaeConnexion" id="BPMNShape_asalaeConnexion">
+        <omgdc:Bounds height="55.0" width="105.0" x="656.0" y="337.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="allowPermissionForCorrection" id="BPMNShape_allowPermissionForCorrection">
+        <omgdc:Bounds height="55.0" width="105.0" x="374.0" y="236.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="suppressPermissionForCorrection" id="BPMNShape_suppressPermissionForCorrection">
+        <omgdc:Bounds height="55.0" width="105.0" x="116.0" y="236.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="exclusivegateway1" id="BPMNShape_exclusivegateway1">
+        <omgdc:Bounds height="40.0" width="40.0" x="406.0" y="344.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
+        <omgdi:waypoint x="601.0" y="364.0"></omgdi:waypoint>
+        <omgdi:waypoint x="656.0" y="364.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
+        <omgdi:waypoint x="426.0" y="236.0"></omgdi:waypoint>
+        <omgdi:waypoint x="311.0" y="197.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow8" id="BPMNEdge_flow8">
+        <omgdi:waypoint x="168.0" y="291.0"></omgdi:waypoint>
+        <omgdi:waypoint x="301.0" y="337.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow9" id="BPMNEdge_flow9">
+        <omgdi:waypoint x="761.0" y="364.0"></omgdi:waypoint>
+        <omgdi:waypoint x="803.0" y="364.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="-9.0" y="364.0"></omgdi:waypoint>
+        <omgdi:waypoint x="46.0" y="364.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="151.0" y="364.0"></omgdi:waypoint>
+        <omgdi:waypoint x="249.0" y="364.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow7" id="BPMNEdge_flow7">
+        <omgdi:waypoint x="311.0" y="197.0"></omgdi:waypoint>
+        <omgdi:waypoint x="168.0" y="236.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow10" id="BPMNEdge_flow10">
+        <omgdi:waypoint x="446.0" y="364.0"></omgdi:waypoint>
+        <omgdi:waypoint x="496.0" y="364.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow11" id="BPMNEdge_flow11">
+        <omgdi:waypoint x="354.0" y="364.0"></omgdi:waypoint>
+        <omgdi:waypoint x="396.0" y="364.0"></omgdi:waypoint>
+        <omgdi:waypoint x="406.0" y="364.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow12" id="BPMNEdge_flow12">
+        <omgdi:waypoint x="426.0" y="344.0"></omgdi:waypoint>
+        <omgdi:waypoint x="426.0" y="291.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

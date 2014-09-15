@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model name="saem:contentmodel" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+
+	<description>SAEM Content Model</description>
+	<author>AKKA</author>
+	<version>1.0</version>
+
+	<imports>
+		<import uri="http://www.alfresco.org/model/content/1.0" prefix="cm" />
+		<import uri="http://www.alfresco.org/model/dictionary/1.0"
+			prefix="d" />
+	</imports>
+
+	<namespaces>
+		<namespace uri="http://www.akka.com/model/content/1.0"
+			prefix="saem" />
+	</namespaces>
+
+	<aspects>
+		<aspect name="saem:transfert_en_cours">
+			<title>Transfert en cours</title>
+			<properties>
+				<property name="saem:taille_telecharge">
+					<type>d:long</type>
+				</property>
+				<property name="saem:pourcentage_d_avancement">
+					<type>d:int</type>
+				</property>
+			</properties>
+		</aspect>
+
+		<aspect name="saem:profilable">
+			<title>profilable</title>
+			<properties>
+				<property name="saem:profilName">
+					<type>d:text</type>
+				</property>
+			</properties>
+			<associations>
+				<association name="saem:serviceVersant">
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>cm:authorityContainer</class>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</target>
+				</association>
+			</associations>
+		</aspect>
+
+		<aspect name="saem:profil">
+			<title>Profil SEDA</title>
+			<properties>
+				<property name="saem:isprofil">
+					<type>d:boolean</type>
+					<mandatory>true</mandatory>
+					<default>true</default>
+				</property>
+			</properties>
+		</aspect>
+		
+		<aspect name="saem:restituable">
+			<title>Archive restituable</title>
+			<properties>
+				<property name="saem:is_restituable">
+					<type>d:boolean</type>
+					<default>true</default>
+				</property>
+				<property name="saem:restitution_request_identifier">
+					<type>d:text</type>
+				</property>
+				<property name="saem:restitution_request_reply_identifier">
+					<type>d:text</type>
+				</property>
+			</properties>
+		</aspect>
+
+		<aspect name="saem:archivable">
+			<title>Archivable</title>
+			<properties>
+				<property name="saem:isarchive">
+					<type>d:boolean</type>
+					<mandatory>true</mandatory>
+					<default>true</default>
+				</property>
+				<property name="saem:seda_object_model">
+					<type>d:any</type>
+				</property>
+				<property name="saem:seda_archive_profil_use_noderef">
+					<type>d:any</type>
+				</property>
+				<property name="saem:seda_archive">
+					<type>d:any</type>
+				</property>
+				<property name="saem:seda_archive_xml">
+					<type>d:text</type>
+				</property>
+				<property name="saem:seda_archive_xml_full">
+					<type>d:text</type>
+				</property>
+				<property name="saem:seda_versement_acknowledgment">
+					<type>d:text</type>
+				</property>
+				<property name="saem:seda_elimination_acknowledgment">
+					<type>d:text</type>
+				</property>
+				<property name="saem:seda_restitution_acknowledgment">
+					<type>d:text</type>
+				</property>
+				<property name="saem:seda_archive_ArchivalAgencyArchiveIdentifier">
+					<type>d:text</type>
+				</property>
+				<property name="saem:seda_archive_profil_model">
+					<type>d:text</type>
+				</property>
+			</properties>
+		</aspect>
+
+		<aspect name="saem:searchable_after_versement">
+			<title>document dont le contenu a ete supprime suite a un versement
+			</title>
+			<properties>
+				<property name="saem:is_hidden">
+					<type>d:boolean</type>
+					<default>true</default>
+				</property>
+				<property name="saem:hidden_content">
+					<type>d:content</type>
+				</property>
+			</properties>
+		</aspect>
+
+		<aspect name="saem:eliminable">
+			<title>Archive éliminable</title>
+			<properties>
+				<property name="saem:is_eliminable">
+					<type>d:boolean</type>
+					<default>true</default>
+				</property>
+			</properties>
+		</aspect>
+
+		<aspect name="saem:verse">
+			<title>Archive versée</title>
+			<properties>
+				<property name="saem:is_verse">
+					<type>d:boolean</type>
+					<default>true</default>
+				</property>
+			</properties>
+		</aspect>
+
+		<aspect name="saem:not_verse">
+			<title>Archive pas encore versée</title>
+			<properties>
+				<property name="saem:is_not_verse">
+					<type>d:boolean</type>
+					<default>true</default>
+				</property>
+				<property name="saem:elimination_initiator">
+					<type>d:text</type>
+				</property>
+			</properties>
+		</aspect>
+
+		<aspect name="saem:sous_objet_archive">
+			<title>Sous objet d'archive</title>
+			<properties>
+				<property name="saem:seda_sous_objet_archive">
+					<type>d:any</type>
+				</property>
+				<property name="saem:seda_sous_objet_archive_xml">
+					<type>d:text</type>
+				</property>
+				<property
+					name="saem:seda_sous_objet_archive_ArchivalAgencyObjectIdentifier">
+					<type>d:text</type>
+				</property>
+			</properties>
+		</aspect>
+
+		<aspect name="saem:document_archive">
+			<title>Document d'archive</title>
+			<properties>
+				<property name="saem:seda_document">
+					<type>d:any</type>
+				</property>
+				<property name="saem:seda_document_xml">
+					<type>d:text</type>
+				</property>
+			</properties>
+		</aspect>
+
+		<aspect name="saem:is_accuse">
+			<title>Caracterise un accuse</title>
+			<properties>
+				<property name="saem:type_accuse">
+					<type>d:text</type>
+				</property>
+			</properties>
+		</aspect>
+		
+		<aspect name="saem:elimination_state">
+			<title>Etat de l'elimination d'une archive</title>
+			<properties>
+				<property name="saem:state">
+					<type>d:text</type>
+				</property>
+			</properties>
+		</aspect>
+		
+		<aspect name="saem:archive_state">
+			<title>Etat d'une archive</title>
+			<properties>
+				<property name="saem:archive_state_prop">
+					<type>d:text</type>
+				</property>
+			</properties>
+		</aspect>
+		
+		<aspect name="saem:profil_name">
+			<title>Etat d'une archive</title>
+			<properties>
+				<property  name="saem:archive_profil_name">
+					<type>d:text</type>
+				</property>
+			</properties>
+		</aspect>
+	</aspects>
+
+</model>

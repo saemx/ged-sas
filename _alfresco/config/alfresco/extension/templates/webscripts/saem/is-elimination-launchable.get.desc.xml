@@ -1,0 +1,7 @@
+<webscript>
+  <shortname>is-elimination-launchable</shortname>
+  <description>Evaluates if an elimination is launchable</description>
+  <url>/saem/is-elimination-launchable</url>
+  <format default="json">argument</format>
+  <authentication>user</authentication>
+</webscript>

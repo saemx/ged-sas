@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="server" targetNamespace="urn:server" xmlns:typens="urn:server" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+   <message name="wsGetMessageResponse">
+    <part name="wsGetMessageReturn" type="xsd:string">
+    </part>
+  </message>
+  <message name="wsGetCompteurResponse">
+    <part name="wsGetCompteurReturn" type="xsd:string">
+    </part>
+  </message>
+  <message name="wsDepotResponse">
+    <part name="wsDepotReturn" type="xsd:string">
+    </part>
+  </message>
+  <message name="wsElimination">
+    <part name="nomBordereau" type="xsd:string">
+    </part>
+    <part name="bordereau" type="xsd:base64Binary">
+    </part>
+    <part name="login" type="xsd:string">
+    </part>
+    <part name="password" type="xsd:string">
+    </part>
+  </message>
+  <message name="wsGSeda">
+    <part name="params" type="xsd:array">
+    </part>
+    <part name="login" type="xsd:string">
+    </part>
+    <part name="password" type="xsd:string">
+    </part>
+  </message>
+  <message name="wsGetDuaExpireesResponse">
+    <part name="wsGetDuaExpireesReturn" type="xsd:string[][]">
+    </part>
+  </message>
+  <message name="wsGetVersionResponse">
+    <part name="wsGetVersionReturn" type="xsd:string">
+    </part>
+  </message>
+  <message name="wsGetCompteur">
+    <part name="id" type="xsd:string">
+    </part>
+    <part name="login" type="xsd:string">
+    </part>
+    <part name="password" type="xsd:string">
+    </part>
+  </message>
+  <message name="wsDepot">
+    <part name="nomBordereau" type="xsd:string">
+    </part>
+    <part name="bordereau" type="xsd:base64Binary">
+    </part>
+    <part name="nomDocument" type="xsd:string">
+    </part>
+    <part name="document" type="xsd:base64Binary">
+    </part>
+    <part name="typeDocument" type="xsd:string">
+    </part>
+    <part name="login" type="xsd:string">
+    </part>
+    <part name="password" type="xsd:string">
+    </part>
+  </message>
+  <message name="wsMessageValidationStateResponse">
+    <part name="wsMessageValidationStateReturn" type="xsd:string">
+    </part>
+  </message>
+  <message name="wsGetMessage">
+    <part name="typeEchange" type="xsd:string">
+    </part>
+    <part name="typeMessage" type="xsd:string">
+    </part>
+    <part name="identifiantMessage" type="xsd:string">
+    </part>
+    <part name="login" type="xsd:string">
+    </part>
+    <part name="password" type="xsd:string">
+    </part>
+  </message>
+  <message name="wsModificationNotification">
+    <part name="nomBordereau" type="xsd:string">
+    </part>
+    <part name="bordereau" type="xsd:base64Binary">
+    </part>
+    <part name="login" type="xsd:string">
+    </part>
+    <part name="password" type="xsd:string">
+    </part>
+  </message>
+  <message name="wsGSedaResponse">
+    <part name="wsGSedaReturn" type="xsd:string">
+    </part>
+  </message>
+  <message name="wsModificationNotificationResponse">
+    <part name="wsModificationNotificationReturn" type="xsd:string">
+    </part>
+  </message>
+  <message name="wsRestitutionResponse">
+    <part name="wsRestitutionReturn" type="xsd:string">
+    </part>
+  </message>
+  <message name="wsCreateMessageValidationResponse">
+    <part name="wsCreateMessageValidationReturn" type="xsd:string">
+    </part>
+  </message>
+  <message name="wsCompleterBordereauResponse">
+    <part name="wsCompleterBordereauReturn" type="xsd:base64Binary">
+    </part>
+  </message>
+  <message name="wsCreateMessageValidation">
+    <part name="archiveDestructionId" type="xsd:string">
+    </part>
+    <part name="login" type="xsd:string">
+    </part>
+    <part name="password" type="xsd:string">
+    </part>
+  </message>
+  <message name="wsCompleterBordereau">
+    <part name="bordereau" type="xsd:base64Binary">
+    </part>
+    <part name="login" type="xsd:string">
+    </part>
+    <part name="password" type="xsd:string">
+    </part>
+  </message>
+  <message name="wsFichiersVolumineux">
+    <part name="nomBordereau" type="xsd:string">
+    </part>
+    <part name="rep" type="xsd:string">
+    </part>
+    <part name="login" type="xsd:string">
+    </part>
+    <part name="password" type="xsd:string">
+    </part>
+  </message>
+  <message name="wsEliminationResponse">
+    <part name="wsEliminationReturn" type="xsd:string">
+    </part>
+  </message>
+  <message name="wsRestitution">
+    <part name="nomBordereau" type="xsd:string">
+    </part>
+    <part name="bordereau" type="xsd:base64Binary">
+    </part>
+    <part name="nomDocument" type="xsd:string">
+    </part>
+    <part name="document" type="xsd:base64Binary">
+    </part>
+    <part name="typeDocument" type="xsd:string">
+    </part>
+    <part name="login" type="xsd:string">
+    </part>
+    <part name="password" type="xsd:string">
+    </part>
+  </message>
+  <message name="wsFichiersVolumineuxResponse">
+    <part name="wsFichiersVolumineuxReturn" type="xsd:string">
+    </part>
+  </message>
+  <message name="wsGetDuaExpirees">
+    <part name="login" type="xsd:string">
+    </part>
+    <part name="password" type="xsd:string">
+    </part>
+  </message>
+  <message name="wsGetVersion">
+    <part name="login" type="xsd:string">
+    </part>
+    <part name="password" type="xsd:string">
+    </part>
+  </message>
+  <message name="wsMessageValidationState">
+    <part name="archiveDestructionId" type="xsd:string">
+    </part>
+    <part name="login" type="xsd:string">
+    </part>
+    <part name="password" type="xsd:string">
+    </part>
+  </message>
+  <portType name="WebServicePortType">
+    <operation name="wsDepot">
+<documentation>
+                Dépose une archive et son bordereau de transfert dans AS@LAE
+            </documentation>
+      <input message="typens:wsDepot">
+    </input>
+      <output message="typens:wsDepotResponse">
+    </output>
+    </operation>
+    <operation name="wsRestitution">
+<documentation>
+                Permet de faire une demande de restitution
+            </documentation>
+      <input message="typens:wsRestitution">
+    </input>
+      <output message="typens:wsRestitutionResponse">
+    </output>
+    </operation>
+    <operation name="wsGetCompteur">
+<documentation>
+                Récupérer la valeur d'un compteur
+            </documentation>
+      <input message="typens:wsGetCompteur">
+    </input>
+      <output message="typens:wsGetCompteurResponse">
+    </output>
+    </operation>
+    <operation name="wsFichiersVolumineux">
+<documentation>
+                Dépose une archive et son bordereau de transfert dans AS@LAE
+            </documentation>
+      <input message="typens:wsFichiersVolumineux">
+    </input>
+      <output message="typens:wsFichiersVolumineuxResponse">
+    </output>
+    </operation>
+    <operation name="wsModificationNotification">
+<documentation>
+                Notification de modification d'archive dans As@lae
+            </documentation>
+      <input message="typens:wsModificationNotification">
+    </input>
+      <output message="typens:wsModificationNotificationResponse">
+    </output>
+    </operation>
+    <operation name="wsCreateMessageValidation">
+<documentation>
+                Envoie une demande de validation
+            </documentation>
+      <input message="typens:wsCreateMessageValidation">
+    </input>
+      <output message="typens:wsCreateMessageValidationResponse">
+    </output>
+    </operation>
+    <operation name="wsMessageValidationState">
+<documentation>
+                Récupere l'etat d'une demande de validation
+            </documentation>
+      <input message="typens:wsMessageValidationState">
+    </input>
+      <output message="typens:wsMessageValidationStateResponse">
+    </output>
+    </operation>
+    <operation name="wsElimination">
+<documentation>
+                Crée une demande d'élimintation dans AS@LAE
+            </documentation>
+      <input message="typens:wsElimination">
+    </input>
+      <output message="typens:wsEliminationResponse">
+    </output>
+    </operation>
+    <operation name="wsCompleterBordereau">
+<documentation>
+                Complétion du bordereau de transfert dans AS@LAE
+            </documentation>
+      <input message="typens:wsCompleterBordereau">
+    </input>
+      <output message="typens:wsCompleterBordereauResponse">
+    </output>
+    </operation>
+    <operation name="wsGetVersion">
+<documentation>
+                Récupère la version courante de ASALAE
+            </documentation>
+      <input message="typens:wsGetVersion">
+    </input>
+      <output message="typens:wsGetVersionResponse">
+    </output>
+    </operation>
+    <operation name="wsGetDuaExpirees">
+<documentation>
+                Récupère les archives dont la DUA est expirée
+            </documentation>
+      <input message="typens:wsGetDuaExpirees">
+    </input>
+      <output message="typens:wsGetDuaExpireesResponse">
+    </output>
+    </operation>
+    <operation name="wsGSeda">
+<documentation>
+                Créer un bordereau SEDA à partir d'un tableau d'informations
+            </documentation>
+      <input message="typens:wsGSeda">
+    </input>
+      <output message="typens:wsGSedaResponse">
+    </output>
+    </operation>
+    <operation name="wsGetMessage">
+<documentation>
+                Récupérer un message d'échange SEDA suite à un envoi sur AS@LAE
+            </documentation>
+      <input message="typens:wsGetMessage">
+    </input>
+      <output message="typens:wsGetMessageResponse">
+    </output>
+    </operation>
+  </portType>
+  <binding name="WebServiceBinding" type="typens:WebServicePortType">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="wsModificationNotification">
+      <soap:operation soapAction="urn:WebServiceAction"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:server"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:server"/>
+      </output>
+    </operation>
+    <operation name="wsDepot">
+      <soap:operation soapAction="urn:WebServiceAction"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:server"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:server"/>
+      </output>
+    </operation>
+    <operation name="wsRestitution">
+      <soap:operation soapAction="urn:WebServiceAction"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:server"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:server"/>
+      </output>
+    </operation>
+    <operation name="wsGetCompteur">
+      <soap:operation soapAction="urn:WebServiceAction"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:server"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:server"/>
+      </output>
+    </operation>
+    <operation name="wsFichiersVolumineux">
+      <soap:operation soapAction="urn:WebServiceAction"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:server"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:server"/>
+      </output>
+    </operation>
+    <operation name="wsCreateMessageValidation">
+      <soap:operation soapAction="urn:WebServiceAction"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:server"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:server"/>
+      </output>
+    </operation>
+    <operation name="wsMessageValidationState">
+      <soap:operation soapAction="urn:WebServiceAction"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:server"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:server"/>
+      </output>
+    </operation>
+    <operation name="wsElimination">
+      <soap:operation soapAction="urn:WebServiceAction"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:server"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:server"/>
+      </output>
+    </operation>
+    <operation name="wsCompleterBordereau">
+      <soap:operation soapAction="urn:WebServiceAction"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:server"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:server"/>
+      </output>
+    </operation>
+    <operation name="wsGetVersion">
+      <soap:operation soapAction="urn:WebServiceAction"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:server"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:server"/>
+      </output>
+    </operation>
+    <operation name="wsGetDuaExpirees">
+      <soap:operation soapAction="urn:WebServiceAction"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:server"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:server"/>
+      </output>
+    </operation>
+    <operation name="wsGSeda">
+      <soap:operation soapAction="urn:WebServiceAction"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:server"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:server"/>
+      </output>
+    </operation>
+    <operation name="wsGetMessage">
+      <soap:operation soapAction="urn:WebServiceAction"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:server"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:server"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="service">
+    <port name="WebServicePort" binding="typens:WebServiceBinding">
+      <soap:address location="http://localhost:8080/alfresco/webservices/service"/>
+    </port>
+  </service>
+</definitions>

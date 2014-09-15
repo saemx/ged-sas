@@ -1,0 +1,136 @@
+.dashlet
+{
+	border: none;
+}
+
+@media screen and (min-width: 1430px) {
+	
+	div .logoAction
+	{
+		padding-left: 15px;
+		margin-right: 10px;
+		float: left;
+		width: 15%;
+	}
+	
+	div .nomDesc
+	{
+		padding-left: 5px;
+		float: left;
+		width: 60%;
+		margin-left: 5%;
+	}
+	
+	a.aMyActions
+	{
+		text-decoration: none;
+		height:100%;
+		width:49%;
+		display:block;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+	
+	a.gauche
+	{
+		float: left;
+	}
+	
+	a.droite
+	{
+		float: left;
+		border-left: 1px solid #ccc;
+	}
+	
+	a.bas
+	{
+		border-top: 1px solid #ccc;
+	}
+}
+
+@media screen and (max-width: 1429px) {
+	
+	div .logoAction
+	{
+		padding-left: 15px;
+		margin-right: 10px;
+		width: 15%;
+	}
+	
+	div .nomDesc
+	{
+		padding-left: 5px;
+		width: 90%;
+		margin-left: 5%;
+	}
+	
+	a.aMyActions
+	{
+		text-decoration: none;
+		height:100%;
+		width:49%;
+		display:block;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+	
+	a.gauche
+	{
+		float: left;
+	}
+	
+	a.droite
+	{
+		float: left;
+		border-left: 1px solid #ccc;
+	}
+	
+	a.bas
+	{
+		border-top: 1px solid #ccc;
+	}
+}
+
+@media screen and (max-width: 1429px) {
+	
+	div .logoAction
+	{
+		padding-left: 15px;
+		margin-right: 10px;
+		width: 15%;
+	}
+	
+	div .nomDesc
+	{
+		padding-left: 5px;
+		/*width: 90%;*/
+		height: 50px;
+		margin-left: 5%;
+	}
+	
+	a.aMyActions
+	{
+		text-decoration: none;
+		height:100%;
+		width:49%;
+		display:block;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+	
+	a.gauche
+	{
+		float: left;
+	}
+	
+	a.droite
+	{
+		float: left;
+		border-left: 1px solid #ccc;
+	}
+	
+	a.bas
+	{
+		border-top: 1px solid #ccc;
+	}
+}

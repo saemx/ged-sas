@@ -1,0 +1,7 @@
+<webscript>
+  <shortname>launch-elimination-action</shortname>
+  <description>Launches the elimination action over the noderef in parameter</description>
+  <url>/saem/launch-elimination-action?noderef={noderef}</url>
+  <format default="json">argument</format>
+  <authentication>user</authentication>
+</webscript>

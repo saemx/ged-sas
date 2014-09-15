@@ -1,0 +1,6 @@
+<webscript>
+	<shortname>submit-create-archive-popup</shortname>
+	<description>Create Archive Submit Popup</description>
+	<format default="json" />
+	<url>/saem/submit-create-archive-popup</url>
+</webscript>

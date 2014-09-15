@@ -1,0 +1,93 @@
+/* Data Table */
+
+.expired-dua .toolbar
+{
+   padding: 8px 5px 1px;
+}
+
+.expired-dua .toolbar a
+{
+   margin-left: 8px;
+}
+
+.expired-dua .yui-dt table
+{
+   border: medium none;
+   width: 100%;
+}
+
+.expired-dua .yui-dt thead
+{
+   display: none;
+}
+
+.expired-dua .yui-dt tbody
+{
+   outline: none;
+}
+
+div.expired-dua .yui-dt-data tr.yui-dt-even,
+div.expired-dua .yui-dt-data tr.yui-dt-odd,
+div.expired-dua .yui-dt-data tr.yui-dt-highlighted
+{
+   background-color: transparent;
+   cursor: default;
+}
+
+.expired-dua .yui-dt-data td
+{
+   border-bottom: 1px dashed #d9d9d9;
+   border-right: medium none;
+   vertical-align: top;
+}
+
+.expired-dua .yui-dt-data tr.yui-dt-last td
+{
+   border-bottom: medium none;
+}
+
+.expired-dua .yui-dt-data td .yui-dt-liner
+{
+   padding: 4px;
+}
+
+.expired-dua .yui-dt-data td.yui-dt-col-icon .yui-dt-liner
+{
+   padding: 4px;
+   text-align: center;
+}
+
+.expired-dua .yui-dt-message td
+{
+   border: medium none;
+}
+
+.expired-dua .detail
+{
+   clear: left;
+   line-height: 1.5em;
+   min-height: 1.5em;
+   padding-bottom: 0.2em;
+}
+
+.expired-dua .detail-social
+{
+   padding-bottom: 0;
+   padding-top: 0.4em;
+}
+
+.expired-dua .detail-social span.item
+{
+   line-height: 1.2em;
+}
+
+.expired-dua .detail span.item
+{
+   float: left;
+   margin-right: 0.8em;
+}
+
+.expired-dua .yui-dt-highlighted .yui-dt-col-actions div
+{
+   visibility: visible;
+}

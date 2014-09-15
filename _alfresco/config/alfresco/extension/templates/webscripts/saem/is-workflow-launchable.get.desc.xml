@@ -1,0 +1,7 @@
+<webscript>
+  <shortname>is-workflow-launchable</shortname>
+  <description>Evaluates if a workflow is launchable</description>
+  <url>/saem/is-workflow-launchable</url>
+  <format default="json">argument</format>
+  <authentication>user</authentication>
+</webscript>

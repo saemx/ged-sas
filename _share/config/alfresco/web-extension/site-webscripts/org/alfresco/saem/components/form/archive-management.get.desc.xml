@@ -1,0 +1,5 @@
+<webscript>
+  <shortname>SAEM Form Component</shortname>
+  <description>Component that renders a form</description>
+  <url>/components/form/archive-management</url>
+</webscript>

@@ -1,0 +1,80 @@
+<view:view xmlns:view="http://www.alfresco.org/view/repository/1.0"
+    xmlns:cm="http://www.alfresco.org/model/content/1.0" xmlns:app="http://www.alfresco.org/model/application/1.0"
+    xmlns:emailserver="http://www.alfresco.org/model/emailserver/1.0">
+
+<cm:folder view:childName="cm:saem_email_templates">
+        <app:uifacets />
+        <cm:name>SAEM Email Templates</cm:name>
+        <app:icon>space-icon-default</app:icon>
+        <cm:title>SAEM Email Templates</cm:title>
+        <cm:description></cm:description>
+        <cm:contains>
+            <cm:content view:childName="cm:saemwf-email-versement_fr.html.ftl">
+                <view:aspects>
+                    <cm:titled />
+                    <cm:author />
+                    <app:inlineeditable />
+                </view:aspects>
+                <view:properties>
+                    <app:editInline>true</app:editInline>
+                    <cm:description>Template d'email pour le workflow de versement SAEM</cm:description>
+                    <cm:content>contentUrl=classpath:alfresco/module/eu_akka_alfresco/bootstrap/saemwf-email-versement_fr.html.ftl|mimetype=text/plain|size=|encoding=UTF-8|locale=fr_FR_</cm:content>
+                    <cm:title>SAEM template mail</cm:title>
+                    <cm:author>Me</cm:author>
+                    <cm:name>saemwf-email-versement_fr.html.ftl</cm:name>
+                </view:properties>
+                <view:associations></view:associations>
+            </cm:content>
+            <cm:content view:childName="cm:saemwf-email-versement.html.ftl">
+                <view:aspects>
+                    <cm:titled />
+                    <cm:author />
+                    <app:inlineeditable />
+                </view:aspects>
+                <view:properties>
+                    <app:editInline>true</app:editInline>
+                    <cm:description>Template d'email pour le workflow de versement SAEM</cm:description>
+                    <cm:content>contentUrl=classpath:alfresco/module/eu_akka_alfresco/bootstrap/saemwf-email-versement.html.ftl|mimetype=text/plain|size=|encoding=UTF-8|locale=en_US_</cm:content>
+                    <cm:title>SAEM template mail</cm:title>
+                    <cm:author>Me</cm:author>
+                    <cm:name>saemwf-email-versement.html.ftl</cm:name>
+                </view:properties>
+                <view:associations></view:associations>
+            </cm:content>
+        </cm:contains>
+                <cm:contains>
+            <cm:content view:childName="cm:saemwf-email-elimination_fr.html.ftl">
+                <view:aspects>
+                    <cm:titled />
+                    <cm:author />
+                    <app:inlineeditable />
+                </view:aspects>
+                <view:properties>
+                    <app:editInline>true</app:editInline>
+                    <cm:description>Template d'email pour le workflow d'élimination SAEM</cm:description>
+                    <cm:content>contentUrl=classpath:alfresco/module/eu_akka_alfresco/bootstrap/saemwf-email-elimination_fr.html.ftl|mimetype=text/plain|size=|encoding=UTF-8|locale=fr_FR_</cm:content>
+                    <cm:title>SAEM template mail</cm:title>
+                    <cm:author>Me</cm:author>
+                    <cm:name>saemwf-email-elimination_fr.html.ftl</cm:name>
+                </view:properties>
+                <view:associations></view:associations>
+            </cm:content>
+            <cm:content view:childName="cm:saemwf-email-elimination.html.ftl">
+                <view:aspects>
+                    <cm:titled />
+                    <cm:author />
+                    <app:inlineeditable />
+                </view:aspects>
+                <view:properties>
+                    <app:editInline>true</app:editInline>
+                    <cm:description>Template d'email pour le workflow d'élimination SAEM</cm:description>
+                    <cm:content>contentUrl=classpath:alfresco/module/eu_akka_alfresco/bootstrap/saemwf-email-elimination.html.ftl|mimetype=text/plain|size=|encoding=UTF-8|locale=en_US_</cm:content>
+                    <cm:title>SAEM template mail</cm:title>
+                    <cm:author>Me</cm:author>
+                    <cm:name>saemwf-email-elimination.html.ftl</cm:name>
+                </view:properties>
+                <view:associations></view:associations>
+            </cm:content>
+        </cm:contains>
+    </cm:folder>
+</view:view>

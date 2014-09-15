@@ -1,0 +1,1 @@
+<#include "get-document-path.get.json.ftl">

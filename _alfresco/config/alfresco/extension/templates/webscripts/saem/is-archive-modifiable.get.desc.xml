@@ -1,0 +1,7 @@
+<webscript>
+  <shortname>is-archive-launchable</shortname>
+  <description>Evaluates if a archive is launchable</description>
+  <url>/saem/is-archive-modifiable</url>
+  <format default="json">argument</format>
+  <authentication>user</authentication>
+</webscript>

@@ -1,0 +1,7 @@
+<webscript>
+  <shortname>get-seda-properties</shortname>
+  <description>Récupération des propriétés SEDA</description>
+  <url>/saem/get-seda-properties</url>
+  <format default="json">argument</format>
+  <authentication>user</authentication>
+</webscript>

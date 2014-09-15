@@ -1,0 +1,7 @@
+<webscript>
+  <shortname>preVersementDestination</shortname>
+  <description>Return destination for preVersement</description>
+  <url>/saem/preVersementDestination</url>
+  <format default="json">argument</format>
+  <authentication>user</authentication>
+</webscript>

@@ -1,0 +1,6 @@
+<webscript>
+   <shortname>Mes traitements</shortname>
+   <description>Dashlet affichant les traitements qui ont été initiés par un membre des groupes auxquel j'appartient</description>
+   <family>site-dashlet</family>
+   <url>/saem/components/dashlets/myTreatments</url>
+</webscript>

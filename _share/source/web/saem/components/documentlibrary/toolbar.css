@@ -1,0 +1,18 @@
+/* SAEM-73 : add new archive button  */
+.toolbar .new-archive span.first-child
+{
+   background-position: 6px 4px;
+   background-repeat: no-repeat;
+   padding-left: 16px;
+}
+
+.toolbar .new-archive span.first-child
+{
+   background-image: url(../../themes/images/archive-icon-16.png);
+
+}
+
+.toolbar .new-archive .yui-button-disabled span.first-child
+{
+   background-image: url(../../themes/images/grey-archive-icon-16.png);
+}

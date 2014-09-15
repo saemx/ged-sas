@@ -1,0 +1,5 @@
+<webscript>
+  <shortname>SAEM Form Component POPUP</shortname>
+  <description>Component that renders a popup</description>
+  <url>/components/form/create-archive-popup</url>
+</webscript>

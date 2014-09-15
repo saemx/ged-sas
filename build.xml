@@ -1,0 +1,415 @@
+<?xml version="1.0"?>
+
+<project name="SAEM" default="deploy" basedir=".">
+	<property file="build-${user.name}.properties" />
+	<property file="build.properties" />
+
+	<property name="config.alfresco.dir" value="${alfresco.ext.dir}/config" />
+	<property name="config.share.dir" value="${share.ext.dir}/config" />
+	<property name="source.alfresco.dir" value="${alfresco.ext.dir}/source/java" />
+	<property name="source.share.dir" value="${share.ext.dir}/source/java" />
+	<property name="source.axis.dir" value="${axis.ext.dir}/source/java" />
+	<property name="classes.axis.dir" value="${build.dir}/classes_axis" />
+	<property name="testsource.alfresco.dir" value="${alfresco.ext.dir}/test/java" />
+	<property name="classes.alfresco.dir" value="${build.dir}/classes" />
+	<property name="classes.share.dir" value="${build.dir}/classes_share" />
+	<property name="lib.share.dir" value="${share.ext.dir}/lib" />
+	<property name="build.min" value="${build.dir}/min" />
+	<property name="yuicompress.warn" value="false" />
+	<!-- Tomcat properties to reload web scripts or the manager webapp -->
+	<property name="tomcat.url" value="http://192.168.56.101:8080" />
+	<property name="tomcat.repo.url" value="${tomcat.url}" />
+	<property name="tomcat.share.url" value="http://192.168.56.101:8080" />
+	<!-- Tomcat properties to reload web scripts -->
+	<property name="webapp.alfresco.path" value="/alfresco" />
+	<property name="webapp.share.path" value="/share" />
+	<property name="post.verbose" value="false" />
+	<property name="repo.admin.username" value="admin" />
+	<property name="repo.admin.password" value="akka" />
+	<property name="repo.scripts.index" value="${tomcat.repo.url}${webapp.alfresco.path}/service/index" />
+	<property name="share.scripts.index" value="${tomcat.share.url}${webapp.share.path}/page/index" />
+
+	<path id="src.classpath">
+		<dirset dir="${build.dir}" />
+		<fileset dir="${alfresco.sdk.dir}/lib" includes="**/*.jar" />
+		<fileset dir="${alfresco.ext.dir}/lib" includes="**/*.jar" />
+	</path>
+
+	<path id="src.classpath.axis">
+		<dirset dir="${build.dir}" />
+		<fileset dir="${axis.ext.dir}/lib" includes="**/*.jar" />
+		<fileset dir="${build.dir}/lib" includes="**/*.jar" />
+		<fileset dir="${alfresco.sdk.dir}/lib" includes="**/*.jar" />
+		<fileset dir="${alfresco.ext.dir}/lib" includes="**/*.jar" />
+	</path>
+	
+	<path id="src.classpath.axishome">
+			<dirset dir="${build.dir}" />
+			<fileset dir="${axis.home}/lib" includes="**/*.jar" />
+			
+		</path>
+
+	<path id="test.classpath">
+		<path refid="src.classpath" />
+		<fileset dir="${alfresco.ext.dir}/test/lib" includes="**/*.jar" />
+	</path>
+
+	<path id="yuicompressor.classpath">
+		<fileset dir="lib">
+			<include name="yuicompressor-2.4.2.jar" />
+			<include name="yui-compressor-ant-task-0.5.jar" />
+		</fileset>
+	</path>
+
+	<taskdef name="yuicompress" classname="net.noha.tools.ant.yuicompressor.tasks.YuiCompressorTask">
+		<classpath>
+			<path refid="yuicompressor.classpath" />
+		</classpath>
+	</taskdef>
+
+	<path id="ml-ant-http.classpath">
+		<fileset dir="lib">
+			<include name="ml-ant-http-1.1.1.jar" />
+		</fileset>
+	</path>
+
+	<taskdef name="http" classname="org.missinglink.ant.task.http.HttpClientTask">
+		<classpath>
+			<path refid="ml-ant-http.classpath" />
+		</classpath>
+	</taskdef>
+
+	<target name="mkdirs">
+		<mkdir dir="${build.dir}/dist" />
+		<mkdir dir="${axis.build.dir}" />
+		<mkdir dir="${build.dir}/lib" />
+		<mkdir dir="${classes.alfresco.dir}" />
+		<mkdir dir="${classes.share.dir}" />
+		<mkdir dir="${classes.axis.dir}" />
+		<mkdir dir="${classes.axis.dir}/META-INF/" />
+		<mkdir dir="${build.min}" />
+	</target>
+
+	<target name="clean">
+		<delete quiet="yes" includeEmptyDirs="true" dir="${build.dir}" />
+		<delete>
+			<fileset dir="${share.ext.dir}">
+				<include name="**/*-min.css" />
+			</fileset>
+		</delete>
+
+	</target>
+
+	<target name="clean-reset-war">
+		<echo>Deleting ${tomcatAlfresco.webapps.dir}/alfresco dir and copying back original alfresco.war from alfresco.war.bak
+        </echo>
+		<available file="${alfresco.war.file}.bak" type="file" property="alfresco.war.bak.present" />
+		<fail unless="alfresco.war.bak.present" message="Could not find ${alfresco.war.file}.bak, please copy alfresco.war to alfresco.war.bak" />
+		<delete quiet="yes" file="${alfresco.war.file}" />
+		<delete quiet="yes" includeEmptyDirs="true" dir="${tomcatAlfresco.webapps.dir}/alfresco" />
+		<copy file="${alfresco.war.file}.bak" tofile="${alfresco.war.file}" />
+	</target>
+
+	<!-- ALFRESCO -->
+
+	<target name="compile-alfresco">
+		<javac classpathref="src.classpath" srcdir="${source.alfresco.dir}" destdir="${classes.alfresco.dir}" debug="true" debuglevel="lines,vars,source" />
+		<javac classpathref="src.classpath.axis" srcdir="${source.axis.dir}" destdir="${classes.axis.dir}" debug="true" debuglevel="lines,vars,source" />
+	</target>
+	
+	<target name="generate-Axis2Code" depends="mkdirs">
+		<java classname="org.apache.axis2.wsdl.WSDL2Java" classpathref="src.classpath.axishome">
+				<arg value="-uri"/>
+				<arg value="${axis.location.wsdl}"/>
+				<arg value="-p"/>
+				<arg value="eu.akka.alfresco.axis2.asalae"/>
+				<arg value="-s"/>
+				<arg value="-d"/>
+				<arg value="adb"/>
+				<arg value="-wv"/>
+				<arg value="1.0"/>
+				<arg value="-ss"/>
+				<arg value="-sd"/>
+				<arg value="-o"/>
+				<arg value="${axis.build.dir}"/>		        
+		</java>		
+	</target>
+
+	<target name="package-alfresco-java" depends="clean, mkdirs, compile-alfresco">
+		<jar destfile="${alfresco.jar.file}">
+			<zipfileset dir="${classes.alfresco.dir}" includes="**/*.class" />
+		</jar>
+	</target>
+
+	<target name="package-alfresco-jar" depends="clean, mkdirs, compile-alfresco">
+		<echo>Packaging extension JAR for AMP</echo>
+		<jar destfile="${alfresco.jar.file}">
+			<zipfileset dir="${classes.alfresco.dir}" includes="**/*.class" />
+			<zipfileset dir="${source.alfresco.dir}" includes="**/*.xml,**/*.properties,**/*.bpmn" />
+		</jar>
+		<copy toDir="${classes.axis.dir}/META-INF/" failonerror="false">
+			<fileset dir="_axis/resources">
+				<include name="*.xml" />
+				<include name="*.wsdl" />
+				<include name="*.xsd" />
+			</fileset>
+		</copy>
+		<copy todir="${build.dir}/axis/config/axis2-web/" overwrite="true">
+			<fileset dir="_axis/axis2-web/" casesensitive="yes" />
+		</copy>
+
+		<copy todir="${build.dir}/axis/config/WEB-INF/classes/" overwrite="true">
+			<fileset dir="_axis/classes/" casesensitive="yes" />
+		</copy>
+
+		<copy todir="${build.dir}/axis/config/WEB-INF/conf/" overwrite="true">
+			<fileset dir="_axis/conf/" casesensitive="yes" />
+		</copy>
+
+		<copy todir="${build.dir}/axis/config/WEB-INF/modules/" overwrite="true">
+			<fileset dir="_axis/modules/" casesensitive="yes" />
+		</copy>
+
+		<copy todir="${build.dir}/axis/config/WEB-INF/services/" overwrite="true">
+			<fileset dir="_axis/services/" casesensitive="yes" />
+		</copy>
+		<jar destfile="${build.dir}/axis/config/WEB-INF/services/service.aar">
+			<fileset excludes="**/Test.class" dir="${classes.axis.dir}" />
+		</jar>
+	</target>
+
+	<target name="package-alfresco-amp" depends="package-alfresco-jar">
+		<echo>Packaging extension AMP file for alfresco.war</echo>
+		<zip destfile="${alfresco.amp.file}">
+			<zipfileset dir="${project.dir}/build" includes="lib/*.jar" />
+			<zipfileset dir="${project.dir}" includes="lib/*.jar" />
+			<zipfileset dir="_axis" includes="lib/*.jar" />
+			<zipfileset dir="${alfresco.ext.dir}" includes="config/**/*.*" excludes="**/module.properties,**/file-mapping.properties" />
+			<zipfileset dir="${config.alfresco.dir}/alfresco/module/${module.id.alfresco}" includes="module.properties,file-mapping.properties" />
+			<zipfileset dir="${alfresco.ext.dir}" includes="web/**/*.*" />
+			<zipfileset dir="${build.dir}/axis" />
+		</zip>
+	</target>
+
+	<!-- A voir -->
+	<target name="deploy-alfresco-amp" depends="clean-reset-war, package-alfresco-amp">
+		<echo>Merges extension AMP file into build/webapps/alfresco.war</echo>
+		<echo>${alfresco.mnt.jar} install &quot;${alfresco.amp.file}&quot; &quot;${alfresco.war.file}&quot; -force -verbose -nobackup </echo>
+		<java fork="true" jar="${alfresco.mnt.jar}">
+			<arg value="install &quot;${alfresco.amp.file}&quot; &quot;${alfresco.war.file}&quot; -force -verbose -nobackup" />
+		</java>
+	</target>
+
+	<target name="deploy-alfresco" depends="clean, mkdirs, compile-alfresco, deploy-alfresco-java" description="Quick deployment of Alfresco avoiding amp">
+		<delete dir="${tomcatAlfresco.dir}/shared/classes/alfresco/extension/" />
+		<copy todir="${tomcatAlfresco.dir}/shared/classes/alfresco/extension/" overwrite="true">
+			<fileset dir="_alfresco/config/alfresco/extension/" casesensitive="yes" />
+		</copy>
+		<copy todir="${tomcatAlfresco.webapps.dir}/alfresco/WEB-INF/classes/alfresco/module/" overwrite="true">
+			<fileset dir="_alfresco/config/alfresco/module/" casesensitive="yes" />
+		</copy>
+		<copy todir="${tomcatAlfresco.webapps.dir}/alfresco/WEB-INF/" overwrite="true">
+			<fileset dir="_alfresco/config/WEB-INF/" casesensitive="yes" />
+		</copy>
+		<delete dir="${tomcatAlfresco.webapps.dir}/alfresco/WEB-INF/services/" />
+
+		<copy todir="${tomcatAlfresco.webapps.dir}/alfresco/axis2-web/" overwrite="true">
+			<fileset dir="_axis/axis2-web/" casesensitive="yes" />
+		</copy>
+
+		<copy todir="${tomcatAlfresco.webapps.dir}/alfresco/WEB-INF/classes/" overwrite="true">
+			<fileset dir="_axis/classes/" casesensitive="yes" />
+		</copy>
+
+		<copy todir="${tomcatAlfresco.webapps.dir}/alfresco/WEB-INF/conf/" overwrite="true">
+			<fileset dir="_axis/conf/" casesensitive="yes" />
+		</copy>
+
+		<copy todir="${tomcatAlfresco.webapps.dir}/alfresco/WEB-INF/lib/" overwrite="true">
+			<fileset dir="_axis/lib/" casesensitive="yes" />
+		</copy>
+
+		<copy todir="${tomcatAlfresco.webapps.dir}/alfresco/WEB-INF/modules/" overwrite="true">
+			<fileset dir="_axis/modules/" casesensitive="yes" />
+		</copy>
+
+		<copy todir="${tomcatAlfresco.webapps.dir}/alfresco/WEB-INF/services/" overwrite="true">
+			<fileset dir="_axis/services/" casesensitive="yes" />
+		</copy>
+
+		<copy todir="${tomcatAlfresco.webapps.dir}/alfresco/WEB-INF/services/" overwrite="true">
+			<fileset dir="${build.dir}/dist/" casesensitive="yes" />
+		</copy>
+	</target>
+
+	<target name="deploy-alfresco-java" depends="package-alfresco-java">
+		<delete>
+			<!-- delete old versions of the project -->
+			<fileset file="${tomcatAlfresco.dir}/webapps/alfresco/WEB-INF/lib/${alfresco.jar.name}" />
+		</delete>
+		<copy todir="${tomcatAlfresco.dir}/webapps/alfresco/WEB-INF/lib/" overwrite="true">
+			<fileset dir="${build.dir}/lib" casesensitive="yes">
+				<include name="${alfresco.jar.name}" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="reload-webscripts-alfresco" depends="deploy-alfresco" description="Reload repository webscripts">
+		<http url="${repo.scripts.index}" method="POST" printrequest="false" printrequestheaders="false" printresponse="false" printresponseheaders="false" expected="200" failonunexpected="true">
+			<credentials username="${repo.admin.username}" password="${repo.admin.password}" />
+			<query>
+				<parameter name="reset" value="on" />
+			</query>
+		</http>
+	</target>
+
+
+	<target name="compile-axis" depends="compile-alfresco, compile-share">
+		<javac classpathref="src.classpath.axis" srcdir="${source.axis.dir}" destdir="${classes.axis.dir}" debug="true" debuglevel="lines,vars,source" />
+
+		<copy toDir="${classes.axis.dir}/META-INF/" failonerror="false">
+			<fileset dir="_axis/resources">
+				<include name="*.xml" />
+				<include name="*.wsdl" />
+				<include name="*.xsd" />
+
+			</fileset>
+		</copy>
+		<jar destfile="${build.dir}/dist/service.aar">
+			<fileset excludes="**/Test.class" dir="${classes.axis.dir}" />
+		</jar>
+	</target>
+
+
+	<!-- SHARE -->
+	<target name="compile-share">
+		<javac classpathref="src.classpath" srcdir="${source.share.dir}" destdir="${classes.share.dir}" debug="true" debuglevel="lines,vars,source" />
+	</target>
+
+	<target name="package-share-java" depends="clean, mkdirs, compile-share">
+		<jar destfile="${share.jar.file}">
+			<zipfileset dir="${classes.share.dir}" includes="**/*.class" />
+		</jar>
+	</target>
+
+	<target name="js.minify">
+		<yuicompress fromdir="${share.ext.dir}/source" todir="${build.min}" excludes="**/*-min.js" warn="${yuicompress.warn}">
+			<include name="**/*.js" />
+		</yuicompress>
+	</target>
+
+	<target name="css.minify">
+		<yuicompress fromdir="${share.ext.dir}/source" todir="${build.min}" excludes="**/*-min.css" warn="${yuicompress.warn}">
+			<include name="**/*.css" />
+		</yuicompress>
+	</target>
+
+	<target name="package-share-jar" depends="clean, mkdirs, compile-share">
+		<echo>Packaging extension JAR file for share.war</echo>
+		<delete file="${share.jar.file}" />
+		<jar destfile="${share.jar.file}">
+			<zipfileset dir="${classes.share.dir}" includes="**/*.class" />
+		</jar>
+	</target>
+
+	<target name="package-share-amp" depends="package-share-jar, js.minify, css.minify">
+		<echo>Packaging extension AMP file for alfresco.war</echo>
+		<zip destfile="${share.amp.file}">
+			<zipfileset dir="${project.dir}/build" includes="lib/*.jar" />
+			<zipfileset dir="${project.dir}" includes="lib/*.jar" />
+			<zipfileset dir="${share.ext.dir}" includes="config/**/*.*" excludes="**/module.properties,**/file-mapping.properties" />
+			<zipfileset dir="${config.share.dir}/alfresco/module/${module.id.share}" includes="module.properties,file-mapping.properties" />
+			<zipfileset dir="${share.ext.dir}/source" includes="web/**/*.*" />
+			<zipfileset dir="${build.min}" includes="web/**/*.*" />
+		</zip>
+	</target>
+
+	<!-- A voir -->
+	<target name="deploy-share-amp" depends="package-share-amp">
+		<echo>Merges extension AMP file into build/webapps/share.war</echo>
+		<echo>${alfresco.mnt.jar} install &quot;${share.amp.file}&quot; &quot;${share.war.file}&quot; -force -verbose -nobackup </echo>
+		<java fork="true" jar="${alfresco.mnt.jar}">
+			<arg value="install &quot;${share.amp.file}&quot; &quot;${share.war.file}&quot; -force -verbose -nobackup" />
+		</java>
+	</target>
+
+	<target name="deploy-share" depends="clean, mkdirs, compile-share, deploy-share-java" description="Quick deployment of Share avoiding amp">
+		<delete dir="${tomcatShare.dir}/shared/classes/alfresco/web-extension/" />
+		<copy todir="${tomcatShare.dir}/shared/classes/alfresco/web-extension/" overwrite="true">
+			<fileset dir="_share/config/alfresco/web-extension" casesensitive="yes" />
+		</copy>
+		<copy todir="${tomcatShare.dir}/webapps/share/" overwrite="true">
+			<fileset dir="_share/source/web" casesensitive="yes" />
+		</copy>
+		<!--copy todir="${tomcatShare.dir}/webapps/share/themes" overwrite="true">
+			<fileset dir="_share/source/web/themes" casesensitive="yes" />
+		</copy>
+		<copy todir="${tomcatShare.dir}/webapps/share/saem" overwrite="true">
+			<fileset dir="_share/source/web/saem/" casesensitive="yes" />
+		</copy-->
+		<copy todir="${tomcatShare.dir}/webapps/share/WEB-INF/" overwrite="true">
+			<fileset dir="_share/config/WEB-INF/" casesensitive="yes" />
+		</copy>
+	</target>
+
+	<target name="axis-service-hotdeploy" depends="clean, mkdirs, compile-axis" description="Quick deployment of Axis avoiding amp">
+		<copy todir="${tomcatAlfresco.webapps.dir}/alfresco/WEB-INF/services/" overwrite="true">
+			<fileset dir="${build.dir}/dist/" casesensitive="yes" />
+		</copy>
+	</target>
+
+	<target name="deploy-axis" depends="clean, mkdirs, compile-axis" description="Quick deployment of Axis avoiding amp">
+		<delete dir="${tomcatAlfresco.webapps.dir}/alfresco/WEB-INF/services/" />
+
+		<copy todir="${tomcatAlfresco.webapps.dir}/alfresco/axis2-web/" overwrite="true">
+			<fileset dir="_axis/axis2-web/" casesensitive="yes" />
+		</copy>
+
+		<copy todir="${tomcatAlfresco.webapps.dir}/alfresco/WEB-INF/classes/" overwrite="true">
+			<fileset dir="_axis/classes/" casesensitive="yes" />
+		</copy>
+
+		<copy todir="${tomcatAlfresco.webapps.dir}/alfresco/WEB-INF/conf/" overwrite="true">
+			<fileset dir="_axis/conf/" casesensitive="yes" />
+		</copy>
+
+		<copy todir="${tomcatAlfresco.webapps.dir}/alfresco/WEB-INF/lib/" overwrite="true">
+			<fileset dir="_axis/lib/" casesensitive="yes" />
+		</copy>
+
+		<copy todir="${tomcatAlfresco.webapps.dir}/alfresco/WEB-INF/modules/" overwrite="true">
+			<fileset dir="_axis/modules/" casesensitive="yes" />
+		</copy>
+
+		<copy todir="${tomcatAlfresco.webapps.dir}/alfresco/WEB-INF/services/" overwrite="true">
+			<fileset dir="_axis/services/" casesensitive="yes" />
+		</copy>
+
+		<copy todir="${tomcatAlfresco.webapps.dir}/alfresco/WEB-INF/services/" overwrite="true">
+			<fileset dir="${build.dir}/dist/" casesensitive="yes" />
+		</copy>
+	</target>
+
+	<target name="deploy-share-java" depends="package-share-java">
+		<delete>
+			<!-- delete old versions of the project -->
+			<fileset file="${tomcatShare.dir}/webapps/share/WEB-INF/lib/${share.jar.name}" />
+		</delete>
+		<copy todir="${tomcatShare.dir}/webapps/share/WEB-INF/lib/" overwrite="true">
+			<fileset dir="${build.dir}/lib" casesensitive="yes">
+				<include name="${share.jar.name}" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="deploy" depends="deploy-share, deploy-alfresco, deploy-axis" />
+
+	<target name="reload-webscripts-share" depends="deploy-share" description="Reload Share webscripts">
+		<http url="${share.scripts.index}" method="POST" printrequest="false" printrequestheaders="false" printresponse="false" printresponseheaders="false" expected="200" failonunexpected="true">
+			<credentials username="${repo.admin.username}" password="${repo.admin.password}" />
+			<query>
+				<parameter name="reset" value="on" />
+			</query>
+		</http>
+	</target>
+</project>

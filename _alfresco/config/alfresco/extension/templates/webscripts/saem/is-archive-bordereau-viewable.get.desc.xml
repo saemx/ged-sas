@@ -1,0 +1,7 @@
+<webscript>
+  <shortname>is-archive-bordereau-viewable</shortname>
+  <description>Evaluates if a archive bordereau is viewable</description>
+  <url>/saem/is-archive-bordereau-viewable</url>
+  <format default="json">argument</format>
+  <authentication>user</authentication>
+</webscript>

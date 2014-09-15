@@ -1,0 +1,16 @@
+.saem-select select{
+	width: 23em;
+	-webkit-appearance: none;
+}
+
+.missing-profils{
+	font-size: 13px;
+	border: 1px solid;
+	margin: 15px 35px 0px 44px;
+	padding: 13px 0px 15px 58px;
+	background-repeat: no-repeat;
+	background-position: 15px center;
+	color: #D8000C;
+	background-color: #FFBABA;
+	background-image: url(../themes/images/error.png);
+}

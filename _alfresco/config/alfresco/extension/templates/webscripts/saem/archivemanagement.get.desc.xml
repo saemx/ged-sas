@@ -1,0 +1,8 @@
+<webscript>
+  <shortname>archivemanagement</shortname>
+  <description>archivemanagement</description>
+  <url>/saem/archivemanagement</url>
+  <format default="json">argument</format>
+  <authentication>user</authentication>
+  <transaction>required</transaction>
+</webscript>

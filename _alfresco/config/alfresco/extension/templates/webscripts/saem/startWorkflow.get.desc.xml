@@ -1,0 +1,7 @@
+<webscript>
+  <shortname>Start-workflow-elimination</shortname>
+  <description>Start workflow elimination</description>
+   <url>/saem/startWorkFlow?nodeRef={nodeRef}</url>
+   <format default="json">argument</format>
+   <authentication>user</authentication>
+</webscript>

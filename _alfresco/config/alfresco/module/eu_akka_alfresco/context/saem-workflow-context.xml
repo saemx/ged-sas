@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<beans>
+	<bean id="saem.workflowBootstrap" parent="workflowDeployer">
+		 <property name="workflowDefinitions">
+			 <list>
+				 <props>
+					 <prop key="engineId">activiti</prop>
+					 <prop key="location">alfresco/module/eu_akka_alfresco/workflows/Versement.bpmn</prop>
+					 <prop key="mimetype">text/xml</prop>
+					 <prop key="redeploy">true</prop> 
+				 </props>
+				 <props>
+					 <prop key="engineId">activiti</prop>
+					 <prop key="location">alfresco/module/eu_akka_alfresco/workflows/Elimination.bpmn</prop>
+					 <prop key="mimetype">text/xml</prop>
+					 <prop key="redeploy">true</prop> 
+				 </props>
+ 				 <props>
+					 <prop key="engineId">activiti</prop>
+					 <prop key="location">alfresco/module/eu_akka_alfresco/workflows/Restitution.bpmn</prop>
+					 <prop key="mimetype">text/xml</prop>
+					 <prop key="redeploy">true</prop> 
+				 </props>
+			 </list>
+		 </property>
+		 <property name="models">
+			 <list>
+				 <value>alfresco/module/eu_akka_alfresco/model/saemWorkflowModel.xml</value>
+			 </list>
+		 </property>
+        <property name="labels">
+            <list>
+                <value>alfresco.module.eu_akka_alfresco.message.saemWorkflow</value>
+            </list>
+        </property>
+	</bean>
+</beans>

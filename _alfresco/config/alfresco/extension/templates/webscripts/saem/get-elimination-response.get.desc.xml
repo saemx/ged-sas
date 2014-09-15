@@ -1,0 +1,7 @@
+<webscript>
+  <shortname>get-elimination-response</shortname>
+  <description>Returns if the one-step workflow has been accepted</description>
+  <url>/saem/get-elimination-response?archiveIdentifier={archiveIdentifier}</url>
+  <format default="json">argument</format>
+  <authentication>user</authentication>
+</webscript>

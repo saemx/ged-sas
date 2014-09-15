@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<page>
+    <title>archive-management</title>
+    <title-id>archive-management</title-id>
+    <description>archive-management</description>
+    <description-id>archive-management</description-id>
+    <template-instance>archive-management</template-instance>
+    <authentication>user</authentication>
+</page>
