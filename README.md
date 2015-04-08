@@ -1,8 +1,8 @@
 ged-sas
 =======
-#compatible# : Alfresco community 4.2.C
+compatible : Alfresco community 4.2.C
 
-#objectifs#
+objectifs
 ===========
 
 Ce module Alfresco permettant l'interaction avec le libriciel (http://adullact.net/projects/asalae/|as@lae).
