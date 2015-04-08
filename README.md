@@ -1,8 +1,9 @@
 ged-sas
 =======
-*compatible* : Alfresco community 4.2.C
+#compatible# : Alfresco community 4.2.C
 
-*objectifs*
+#objectifs#
+===========
 
 Ce module Alfresco permettant l'interaction avec le libriciel (http://adullact.net/projects/asalae/|as@lae).
 Il permet de disposer d'un formulaire interactif alimenté par des profils SEDA (.xsd) et de superviser le processus d'archivage mettant en relation les services producteurs d'archives et les services d'archives.
