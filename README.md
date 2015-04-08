@@ -18,3 +18,5 @@ Installation
 Le code source mis à disposition doit être compilé à l'aide de l'outil ant et des librairies de compilation fournies par Alfresco share.sh et alfresco.sh
 
 Dans le cas, où l'utilisateur souhaite simplement réutiliser en l'état le code mis à disposition, les paquets amp compilés sont également disponibles. Il est dès lors simplement nécessaire de placer ces fichiers amp dans les dossiers dédiés et de relancer le service alfresco.
+
+Le fichier saem.properties doit être modifié pour correspondre aux noeuds du système cible et à l'url à laquelle est disponible l'instance asalae avec laquelle on souhaie interagir.
